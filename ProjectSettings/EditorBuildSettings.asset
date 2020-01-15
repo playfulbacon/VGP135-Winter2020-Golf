@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/Scenes/Menu.unity
+    guid: 4622f85bb1bb6454cb87f12e826a0b24
+  - enabled: 0
+    path: Assets/Scenes/LevelSelect.unity
+    guid: 41875d1ba034da94e8f59d2870fd028b
+  - enabled: 0
+    path: Assets/Students/William/William_Level3.unity
+    guid: 34e4a72b9551a344eb6a2d81aa29f97b
+  - enabled: 0
+    path: Assets/Students/William/William_Level4.unity
+    guid: 26d6416c0e4442e41b820745de0ef4c8
+  - enabled: 0
+    path: Assets/Students/William/William_Level5.unity
+    guid: 5c1e3297f2b9d724fadeb974c07417ef
+  - enabled: 0
+    path: Assets/Students/Wallace/Wallace_Level1.unity
+    guid: 695e3ad516a9ec344ac6a97c4212f67b
+  - enabled: 0
+    path: Assets/Students/Wallace/Wallace_Level2.unity
+    guid: 942fd9f5e34e07641bc99924de108a3d
+  - enabled: 0
+    path: Assets/Students/Wallace/Wallace_Level3.unity
+    guid: 6d06b9ad0f7182845bbd91f8cef7ccfa
+  - enabled: 0
+    path: Assets/Students/Aisle_Neral/Aisle_Level_1.unity
+    guid: 3d3ef3b2c1a8e1545a4dc286457e5276
+  - enabled: 0
+    path: Assets/Students/Aisle_Neral/Aisle_Level_2.unity
+    guid: 4d08b94d1a9fb8e48979b2bc26a8d7d9
+  - enabled: 0
+    path: Assets/Students/Aisle_Neral/Aisle_Level_3.unity
+    guid: 753e60705cd0b634491fbf739a5b0123
+  - enabled: 0
+    path: Assets/Students/Amy/Scenes/Amy_Level1.unity
+    guid: c53b87e39fa0d6d4b856fc733b21c33c
+  - enabled: 0
+    path: Assets/Students/Amy/Scenes/Amy_Level2.unity
+    guid: 8a2e06dec0343954888b919d933950ca
+  - enabled: 0
+    path: Assets/Students/Amy/Scenes/Amy_Level3.unity
+    guid: 82cd93f803d409d4ebfe1a86e726d4d9
+  - enabled: 0
+    path: Assets/Students/AndyBacon/AndyBacon_Level1.unity
+    guid: 9fcf24186d1de1e4296bb618f12356cd
+  - enabled: 0
+    path: Assets/Students/AndyBacon/AndyBacon_Level2.unity
+    guid: 28a207ca5545fb14cbc384f1205eb4df
+  - enabled: 0
+    path: Assets/Students/AndyBacon/AndyBacon_Level3.unity
+    guid: 69301d316001d23478cc96e1152efeb9
+  - enabled: 0
+    path: Assets/Students/Cyro/Scenes/Cyro_Level3.unity
+    guid: 7b1fc823f3a1c7648944e116d16da1bf
+  - enabled: 0
+    path: Assets/Students/Cyro/Scenes/Cyro_Level4.unity
+    guid: 135378d4029b64f4fbf1b19595e6085a
+  - enabled: 0
+    path: Assets/Students/Cyro/Scenes/Cyro_Level5.unity
+    guid: 799cf910bcb22344fa1bfb2f2f6ae3bd
+  - enabled: 1
+    path: Assets/Students/FlavioStuff/Flavio_Level1.unity
+    guid: 792240cbedfb77a48bcbe1acd094aaa6
+  - enabled: 1
+    path: Assets/Students/FlavioStuff/Flavio_Level2.unity
+    guid: 693f65a957d99394e83633a25be819f1
+  - enabled: 1
+    path: Assets/Students/FlavioStuff/Flavio_level3.unity
+    guid: 1009dff3b9676034bb9401beff7fb8f4
+  - enabled: 0
+    path: Assets/Students/Justin_Tim_1840457/Justin_Tim_Level2.unity
+    guid: c32c5f7f31f5b3941a22eec35e1356e1
+  - enabled: 0
+    path: Assets/Students/Justin_Tim_1840457/Justin_Tim_Level3.unity
+    guid: 771a7b78b931c0345b23500d0abc7447
+  - enabled: 0
+    path: Assets/Students/Justin_Tim_1840457/Justin_Tim_NewLevel1.unity
+    guid: 019c986bf6b51674494d012b34f589aa
+  - enabled: 0
+    path: Assets/Students/JustinQuestroo/JustinQuestroo_Level4.unity
+    guid: 8c58ab8768f5382408eebae4b4f082ae
+  - enabled: 0
+    path: Assets/Students/JustinQuestroo/JustinQuestroo_Level5.unity
+    guid: 739d628ff0d0dc1428d3b6f0bd53b5cc
+  - enabled: 0
+    path: Assets/Students/JustinQuestroo/JustinQuestroo_WorkshopLevel1.unity
+    guid: 511f3d8923f3f7b4fb832693f8241722
+  - enabled: 0
+    path: Assets/Students/LichengZhou/LichengZhou_level1.unity
+    guid: 580c08fcde48949469dd6ad35e080faf
+  - enabled: 0
+    path: Assets/Students/LichengZhou/LichengZhou_level2.unity
+    guid: 7dd8eaf3ea3433f41997958f4cc7fe09
+  - enabled: 0
+    path: Assets/Students/LichengZhou/LichengZhou_level3.unity
+    guid: 2809fd71141373e478b59ac076bfc6ea
+  - enabled: 0
+    path: Assets/Students/Viren/Viren_Level1.unity
+    guid: c1b8c0358d1434a5c881221a82707a23
+  - enabled: 0
+    path: Assets/Students/Viren/Viren_Level2.unity
+    guid: 4fe84e98873f84ead8076f52c1d029e8
+  - enabled: 0
+    path: Assets/Students/Viren/Viren_Level3.unity
+    guid: a2ab2d387f98e4098b423e2662218a9d
+  - enabled: 0
+    path: Assets/Students/MingzhuoZhang/MingzhuoZhang_Level2.unity
+    guid: 52be8e162e46e6f4dafa40d5806d071d
+  - enabled: 0
+    path: Assets/Students/MingzhuoZhang/MingzhuoZhang_Level3.unity
+    guid: 0e89b57b8b50c97448a0998c22c3e465
+  - enabled: 0
+    path: Assets/Students/MingzhuoZhang/MingzhuoZhang_Level4.unity
+    guid: d8e3aa204107c78489894a8857f5b193
+  - enabled: 0
+    path: Assets/Students/MingzhuoZhang/MingzhuoZhang_FinalFeature.unity
+    guid: 4a906a08998bb154895fa23acaaef7b9
+  - enabled: 0
+    path: Assets/JustinFinal/JustinFinalLevelTest.unity
+    guid: 88fb74c677e8ee44b98cee2671a6d28d
+  m_configObjects: {}

@@ -7,104 +7,57 @@ using Unity.IO;
 public class Ball : MonoBehaviour
 {
     Rigidbody rb;
-    bool isPressed = false;
-    bool isDragging = false;
-    public Transform aimPrefab;
-    Vector3 hitDirection;
+    [SerializeField]
+    Transform aimPrefab;
     float hitMaxForce = 1000f;
-
     [SerializeField]
     float currentForce = 0f;
-
-    Vector3 mouseStartPosition;
-    Vector3 mouseFinalPosition;
-
     float forcePercentage = 0.0f;
-
     float maxForceDistance = 200.0f;
-
-    float timeRatio = 0.2f;
-
     float currentForceDistance;
 
-    float aimPrefabZLength;
-    Vector2 dragStartPos;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         aimPrefab = Instantiate(aimPrefab);
-        aimPrefabZLength = aimPrefab.transform.localScale.z;
         aimPrefab.gameObject.SetActive(false);
     }
 
-    void LateUpdate()
+    public void MouseDown()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            rb.isKinematic = true;
-            isPressed = true;
+        rb.isKinematic = true;
+    }
 
-            Time.timeScale = timeRatio;
+    public void StartDrag()
+    {
+        aimPrefab.gameObject.SetActive(true);
+    }
 
-            dragStartPos = Input.mousePosition;
-        }
+    public void Drag(Vector3 hitDirection, float dragDistance)
+    {
+        aimPrefab.transform.forward = hitDirection;
+        aimPrefab.position = transform.position - hitDirection * 0.5f;
 
-        if (isPressed)
-        {
-            Vector2 mousePos = Input.mousePosition;
+        forcePercentage = dragDistance / maxForceDistance;
 
-            if (Vector3.Distance(mousePos, dragStartPos) > 0.5f)
-            {
-                if (!isDragging)
-                {
-                    mouseStartPosition = Input.mousePosition;
+        if (forcePercentage > 1.0f)
+            forcePercentage = 1.0f;
 
-                    isDragging = true;
+        aimPrefab.GetComponent<Aimer>().SetPercentage(forcePercentage);
 
-                    aimPrefab.gameObject.SetActive(true);
-                }
+        currentForce = hitMaxForce * forcePercentage;
+    }
 
-                hitDirection = -(mousePos - dragStartPos).normalized;
-                hitDirection = new Vector3(hitDirection.x, 0f, hitDirection.y);
-                aimPrefab.transform.forward = hitDirection;
-                aimPrefab.position = transform.position - hitDirection * 0.5f;
-            }
-        }
+    public void MouseUp()
+    {
+        rb.isKinematic = false;
+        aimPrefab.gameObject.SetActive(false);
+    }
 
-        if (isDragging)
-        {
-            mouseFinalPosition = Input.mousePosition;
-            currentForceDistance = (mouseFinalPosition - mouseStartPosition).magnitude;
-
-            forcePercentage = currentForceDistance / maxForceDistance;
-
-            if (forcePercentage > 1.0f)
-                forcePercentage = 1.0f;
-
-            aimPrefab.GetComponent<Aimer>().forceQuad.transform.localScale = new Vector3(aimPrefab.localScale.x, aimPrefab.localScale.y, -(aimPrefabZLength * forcePercentage));
-            //aimPrefab.localScale = new Vector3(aimPrefab.localScale.x, aimPrefab.localScale.y, -(aimPrefabZLength * forcePercentage));
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            currentForce = hitMaxForce * forcePercentage;
-
-            rb.isKinematic = false;
-            isPressed = false;
-            aimPrefab.gameObject.SetActive(false);
-
-            if (isDragging)
-                rb.AddForce(hitDirection * currentForce);
-
-            isDragging = false;
-            currentForce = 0.0f;
-
-            Time.timeScale = 1.0f;
-        }
-
-        Time.fixedDeltaTime = .02f * Time.timeScale;
-        //Debug.Log(Time.timeScale);
+    public void Hit(Vector3 hitDirection)
+    {
+        rb.AddForce(hitDirection * currentForce);
     }
 
     public void OnTriggerEnter(Collider other)

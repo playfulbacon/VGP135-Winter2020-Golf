@@ -2,48 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class BallHealth : MonoBehaviour
 {
     public float maxHealth = 100f;
-    float health = 0.0f;
-    public Slider slider;
+    float currentHealth;
 
+    // Start is called before the first frame update
     void Start()
     {
         SetHealth(maxHealth);
     }
 
-    public void SetHealth(float set)
+    // Update is called once per frame
+    void Update()
     {
-        health = set;
-        health = Mathf.Clamp(health, 0, maxHealth);
-        UpdateUI();
+        
     }
 
-    private void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
-        SetHealth(health - damage);
+        SetHealth(currentHealth - damage);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void SetHealth(float health)
     {
-        Obstacle obstacle = collision.gameObject.GetComponent<Obstacle>();
-        if (obstacle != null)
-        {
-            TakeDamage(obstacle.damage);
-        }
-    }
+        currentHealth = health;
 
-    private void UpdateUI()
-    {
-        slider.value = Mathf.Lerp(0f, 1f, health / maxHealth);
-
-        if (health <= 0.0f)
-        {
-            //Reset level
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        Healthbar.Instance.slider.value = currentHealth / maxHealth;
     }
 }

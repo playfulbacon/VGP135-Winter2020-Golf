@@ -16,7 +16,6 @@ public class Ball : MonoBehaviour
     float maxForceDistance = 200.0f;
     float currentForceDistance;
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();

@@ -9,32 +9,24 @@ public class Ball : MonoBehaviour
     Rigidbody rb;
     bool isPressed = false;
     bool isDragging = false;
-    public Transform aimPrefab;
+    [SerializeField]
+    Transform aimPrefab;
     Vector3 hitDirection;
     float hitMaxForce = 1000f;
-
     [SerializeField]
     float currentForce = 0f;
-
     Vector3 mouseStartPosition;
     Vector3 mouseFinalPosition;
-
     float forcePercentage = 0.0f;
-
     float maxForceDistance = 200.0f;
-
-    float timeRatio = 0.2f;
-
     float currentForceDistance;
-
-    float aimPrefabZLength;
     Vector2 dragStartPos;
+    float aimingSlowdown = 0.2f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         aimPrefab = Instantiate(aimPrefab);
-        aimPrefabZLength = aimPrefab.transform.localScale.z;
         aimPrefab.gameObject.SetActive(false);
     }
 
@@ -45,7 +37,7 @@ public class Ball : MonoBehaviour
             rb.isKinematic = true;
             isPressed = true;
 
-            Time.timeScale = timeRatio;
+            Time.timeScale = aimingSlowdown;
 
             dragStartPos = Input.mousePosition;
         }
@@ -82,13 +74,14 @@ public class Ball : MonoBehaviour
             if (forcePercentage > 1.0f)
                 forcePercentage = 1.0f;
 
-            aimPrefab.GetComponent<Aimer>().forceQuad.transform.localScale = new Vector3(aimPrefab.localScale.x, aimPrefab.localScale.y, -(aimPrefabZLength * forcePercentage));
-            //aimPrefab.localScale = new Vector3(aimPrefab.localScale.x, aimPrefab.localScale.y, -(aimPrefabZLength * forcePercentage));
+            aimPrefab.GetComponent<Aimer>().SetPercentage(forcePercentage);
+
+            currentForce = hitMaxForce * forcePercentage;
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            currentForce = hitMaxForce * forcePercentage;
+            Time.timeScale = 1f;
 
             rb.isKinematic = false;
             isPressed = false;
@@ -99,12 +92,7 @@ public class Ball : MonoBehaviour
 
             isDragging = false;
             currentForce = 0.0f;
-
-            Time.timeScale = 1.0f;
         }
-
-        Time.fixedDeltaTime = .02f * Time.timeScale;
-        //Debug.Log(Time.timeScale);
     }
 
     public void OnTriggerEnter(Collider other)

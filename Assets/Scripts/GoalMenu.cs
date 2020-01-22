@@ -27,9 +27,4 @@ public class GoalMenu : MonoBehaviour
     {
         SceneManager.LoadScene(levelSelectSceneName);
     }
-
-    public void NextLevel(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-    }
 }

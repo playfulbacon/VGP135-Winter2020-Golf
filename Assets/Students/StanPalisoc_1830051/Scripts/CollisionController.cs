@@ -11,7 +11,7 @@ public class CollisionController : MonoBehaviour
      void OnCollisionEnter(Collision collision)
     {
         //Check if it collides with an object of that tag, if it does subtract 10hp
-        if(collision.gameObject.tag == "Obstacle")
+        if(collision.gameObject.CompareTag("Obstacle"))
         {
           //  print("Collided");
             if(healthBar)

@@ -67,7 +67,13 @@ public class Ball : MonoBehaviour
         hitCounterUI.text = "Hit:" + hit.ToString();
     }
 
-    public void OnTriggerEnter(Collider other)
+	public void ReduceHit()
+	{
+		--hit;
+		hitCounterUI.text = "Hit:" + hit.ToString();
+	}
+
+	public void OnTriggerEnter(Collider other)
     {
         Goal goal = other.attachedRigidbody?.GetComponent<Goal>();
         if (goal)

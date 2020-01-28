@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Unity.IO;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -16,12 +17,16 @@ public class Ball : MonoBehaviour
     float maxForceDistance = 200.0f;
     float currentForceDistance;
 
+    [SerializeField]
+    Text hitCounterUI;
+    int hit = 0;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         aimPrefab = Instantiate(aimPrefab);
         aimPrefab.gameObject.SetActive(false);
+        hitCounterUI.text = "Hit:" + hit.ToString();
     }
 
     public void MouseDown()
@@ -58,6 +63,8 @@ public class Ball : MonoBehaviour
     public void Hit(Vector3 hitDirection)
     {
         rb.AddForce(hitDirection * currentForce);
+        hit++;
+        hitCounterUI.text = "Hit:" + hit.ToString();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -67,6 +74,7 @@ public class Ball : MonoBehaviour
         {
             goal.OnHit();
             rb.isKinematic = true;
+            GetComponent<Score>().SetScore(hit);
         }
 
         Collectable collectable = other.attachedRigidbody?.GetComponent<Collectable>();
@@ -75,4 +83,5 @@ public class Ball : MonoBehaviour
             collectable.OnCollect();
         }
     }
+
 }

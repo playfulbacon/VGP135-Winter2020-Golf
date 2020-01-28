@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GoalMenu : MonoBehaviour
 {
     public string levelSelectSceneName;
     public GameObject goalMenuHolder;
+
 
     void Start()
     {

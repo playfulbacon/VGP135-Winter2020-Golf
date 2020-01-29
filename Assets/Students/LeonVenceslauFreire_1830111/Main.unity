@@ -131,8 +131,8 @@ GameObject:
   - component: {fileID: 7873932}
   - component: {fileID: 7873931}
   - component: {fileID: 7873930}
-  - component: {fileID: 7873929}
   - component: {fileID: 7873933}
+  - component: {fileID: 7873929}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -149,9 +149,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7873928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fde4d6db4b1270043b7e4d92d4efda8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 403e86546552af94e8cfcff22e95e125, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  distance: 2.5
+  direction: 0
 --- !u!23 &7873930
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1552,8 +1555,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 647084180}
-  - component: {fileID: 647084179}
   - component: {fileID: 647084181}
+  - component: {fileID: 647084179}
   m_Layer: 0
   m_Name: MovingObject
   m_TagString: Untagged
@@ -1570,9 +1573,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 647084178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cc5b7c150c39a24caf56d5c10b9fb85, type: 3}
+  m_Script: {fileID: 11500000, guid: 63413b7a25ef2ba45a62b4685b6eb767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathPointHolder: {fileID: 1393983657}
+  speed: 5
 --- !u!4 &647084180
 Transform:
   m_ObjectHideFlags: 0
@@ -1696,6 +1701,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &714021159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4270125371552709005, guid: cda6c32e4411bdc4a8ca4b9968b4daae,
+    type: 3}
+  m_PrefabInstance: {fileID: 1112966857}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &714021162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714021159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9029914e9040b64ba11dd915f97eca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &758345137
 GameObject:
   m_ObjectHideFlags: 0

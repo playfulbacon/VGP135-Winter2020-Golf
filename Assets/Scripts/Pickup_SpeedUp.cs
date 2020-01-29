@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedUp : Pickup
+public class Pickup_SpeedUp : Pickup
 {
     public float multiplier = 2.0f;
     // Start is called before the first frame update

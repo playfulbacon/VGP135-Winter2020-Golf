@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1032413852782456093}
   - component: {fileID: 1032413852782456089}
   m_Layer: 0
-  m_Name: SpeedUpCapsule
+  m_Name: Pickup_SpeedUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

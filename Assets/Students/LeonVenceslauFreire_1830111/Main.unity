@@ -1936,8 +1936,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 922817508}
-  - component: {fileID: 922817507}
   - component: {fileID: 922817506}
+  - component: {fileID: 922817507}
   m_Layer: 0
   m_Name: Collectable
   m_TagString: Untagged
@@ -1967,11 +1967,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 922817505}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b0f15e0e908a4d459ea608c848981d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 85f38570bbde3914788f141b2b4caa07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeSize: 0
-  sizeMultiplier: 2
 --- !u!4 &922817508
 Transform:
   m_ObjectHideFlags: 0

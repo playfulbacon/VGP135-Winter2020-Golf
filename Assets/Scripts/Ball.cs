@@ -34,6 +34,18 @@ public class Ball : MonoBehaviour
         aimPrefab.gameObject.SetActive(true);
     }
 
+    public void ModifySpeed(float multiplier)
+    {
+        hitMaxForce *= multiplier;
+        currentForce *=  multiplier;      
+    }
+
+    public void ResetStats()
+    {
+        currentForce = 0.0f;
+        hitMaxForce = 1000.0f;
+    }
+
     public void Drag(Vector3 hitDirection, float dragDistance)
     {
         aimPrefab.transform.forward = hitDirection;
@@ -47,6 +59,7 @@ public class Ball : MonoBehaviour
         aimPrefab.GetComponent<Aimer>().SetPercentage(forcePercentage);
 
         currentForce = hitMaxForce * forcePercentage;
+        Debug.Log("Current force" + currentForce.ToString());
     }
 
     public void MouseUp()

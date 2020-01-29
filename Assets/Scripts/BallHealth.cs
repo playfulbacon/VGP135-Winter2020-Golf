@@ -7,6 +7,7 @@ public class BallHealth : MonoBehaviour
 {
     public float maxHealth = 100f;
     float currentHealth;
+    public bool mInvincible = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class BallHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if(mInvincible == false)
         SetHealth(currentHealth - damage);
     }
 

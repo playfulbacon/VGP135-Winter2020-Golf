@@ -14,9 +14,9 @@ public class PickupExample : Pickup
 
     }
 
-    public override void OnPickup()
+    public override void OnPickup(Ball ball)
     {
-        base.OnPickup();
+        base.OnPickup(ball);
         print("pickup example");
     }
 }

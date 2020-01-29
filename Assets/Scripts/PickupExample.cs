@@ -24,6 +24,7 @@ public class PickupExample : Pickup
     {
         if (other.CompareTag("Key"))
         {
+            Obstacle = GameObject.FindGameObjectWithTag("obstacles");
             Obstacle.SetActive(false);
         }
     }

@@ -16,7 +16,6 @@ public class Ball : MonoBehaviour
     float maxForceDistance = 200.0f;
     float currentForceDistance;
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -58,21 +57,5 @@ public class Ball : MonoBehaviour
     public void Hit(Vector3 hitDirection)
     {
         rb.AddForce(hitDirection * currentForce);
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        Goal goal = other.attachedRigidbody?.GetComponent<Goal>();
-        if (goal)
-        {
-            goal.OnHit();
-            rb.isKinematic = true;
-        }
-
-        Collectable collectable = other.attachedRigidbody?.GetComponent<Collectable>();
-        if (collectable)
-        {
-            collectable.OnCollect();
-        }
     }
 }

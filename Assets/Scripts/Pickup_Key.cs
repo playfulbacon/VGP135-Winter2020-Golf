@@ -19,9 +19,9 @@ public class Pickup_Key : Pickup
         
     }
 
-    public override void OnPickup()
+    public override void OnPickup(Ball ball)
     {
-        base.OnPickup();
+        base.OnPickup(ball);
         // turn off the wall
         wall.SetActive(false);
     }

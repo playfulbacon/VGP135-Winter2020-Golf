@@ -2,17 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ChangeSize
+{
+    Increase,
+    Decrease
+}
+
 public class PickupResizeBall : Pickup
 {
-    // Start is called before the first frame update
+    public ChangeSize changeSize;
+    public int sizeMultiplier;
+
     void Start()
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (changeSize == ChangeSize.Increase)
+        {
+            other.transform.localScale *= sizeMultiplier;
+        }
+        else if (changeSize == ChangeSize.Decrease)
+        {
+            other.transform.localScale /= sizeMultiplier;
+        }
+
+        Destroy(gameObject);
     }
 }

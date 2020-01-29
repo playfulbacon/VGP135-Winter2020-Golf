@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BallController : MonoBehaviour
 {
+    public Action OnTouchDown, OnStartDrag, OnTouchUp;
+    public Action<Vector3, float> OnDrag;
+    public Action<Vector3> OnHit;
+
     Ball[] balls;
     float aimingSlowdown = 0.2f;
     bool isDragging = false;
@@ -11,9 +16,19 @@ public class BallController : MonoBehaviour
     bool isPressed = false;
     Vector3 mouseStartPosition, dragStartPos;
 
+    int hits = 0;
+
     void Start()
     {
         balls = FindObjectsOfType<Ball>();    
+
+        foreach(Ball ball in balls)
+        {
+            OnTouchDown += ball.MouseDown;
+            OnStartDrag += ball.StartDrag;
+            OnDrag += ball.Drag;
+            OnHit += ball.Hit;
+        }
     }
 
     void LateUpdate()
@@ -23,10 +38,7 @@ public class BallController : MonoBehaviour
             Time.timeScale = aimingSlowdown;
             isPressed = true;
             dragStartPos = Input.mousePosition;
-
-            // MouseDown
-            foreach (Ball ball in balls)
-                ball.MouseDown();
+            OnTouchDown?.Invoke();
         }
 
         if (isPressed)
@@ -39,9 +51,7 @@ public class BallController : MonoBehaviour
                 {
                     mouseStartPosition = Input.mousePosition;
                     isDragging = true;
-
-                    foreach (Ball ball in balls)
-                        ball.StartDrag();
+                    OnStartDrag?.Invoke();
                 }
 
                 hitDirection = -(mousePos - dragStartPos).normalized;
@@ -52,9 +62,7 @@ public class BallController : MonoBehaviour
         if (isDragging)
         {
             float dragDistance = (Input.mousePosition - mouseStartPosition).magnitude;
-            // Drag
-            foreach (Ball ball in balls)
-                ball.Drag(hitDirection, dragDistance);
+            OnDrag?.Invoke(hitDirection, dragDistance);
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -66,8 +74,7 @@ public class BallController : MonoBehaviour
 
             if (isDragging)
             {
-                foreach (Ball ball in balls)
-                    ball.Hit(hitDirection);
+                OnHit?.Invoke(hitDirection);
             }
 
             isPressed = false;

@@ -8,9 +8,14 @@ public class Goal : MonoBehaviour
 
     void Start() {}
 
-    public virtual void OnHit()
+    public void OnTriggerEnter(Collider other)
     {
-        FindObjectOfType<GoalMenu>()?.SetGoalMenu(true);
+        Ball ball = other.GetComponentInParent<Ball>();
+        if (ball)
+        {
+            ball.GetComponent<Rigidbody>().isKinematic = true;
+            FindObjectOfType<GoalMenu>()?.SetGoalMenu(true);
+        }
     }
 
 }

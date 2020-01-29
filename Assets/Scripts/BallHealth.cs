@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BallHealth : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class BallHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         SetHealth(currentHealth - damage);
+        if (currentHealth <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     public void SetHealth(float health)

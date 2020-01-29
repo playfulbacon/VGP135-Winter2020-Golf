@@ -6,36 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public string startScene;
-    public GameObject startUI;
-    public GameObject loginUI;
-    public InputField inputName;
-    public Text text;
-
-    private string playerName;
+    [SerializeField]
+    Button startButton;
 
     void Start()
     {
-        startUI.SetActive(false);
-        loginUI.SetActive(true);
-
+        startButton.onClick.AddListener(StartGame);
     }
 
-    public void Login()
+    void Update()
     {
-        playerName = inputName.text;
-        loginUI.SetActive(false);
-        startUI.SetActive(true);
-        text.text = "Welcome " + playerName;
+        
     }
 
     public void StartGame()
     {
-        SceneManager.LoadScene(startScene);
-    }
-
-    public string GetPlayerName()
-    {
-        return playerName;
+        SceneManager.LoadScene("Main");
     }
 }

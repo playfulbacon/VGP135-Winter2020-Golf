@@ -10,6 +10,7 @@ public class Ball : MonoBehaviour
     [SerializeField]
     Transform aimPrefab;
     float hitMaxForce = 1000f;
+    float speedMultiplier = 1f;
     [SerializeField]
     float currentForce = 0f;
     float forcePercentage = 0.0f;
@@ -34,16 +35,14 @@ public class Ball : MonoBehaviour
         aimPrefab.gameObject.SetActive(true);
     }
 
-    public void ModifySpeed(float multiplier)
+    public void SetSpeedMultipler(float multiplier)
     {
-        hitMaxForce *= multiplier;
-        currentForce *=  multiplier;      
+        speedMultiplier = multiplier;    
     }
 
-    public void ResetStats()
+    public void ResetSpeedMultiplier()
     {
-        currentForce = 0.0f;
-        hitMaxForce = 1000.0f;
+        speedMultiplier = 1f;
     }
 
     public void Drag(Vector3 hitDirection, float dragDistance)
@@ -58,7 +57,7 @@ public class Ball : MonoBehaviour
 
         aimPrefab.GetComponent<Aimer>().SetPercentage(forcePercentage);
 
-        currentForce = hitMaxForce * forcePercentage;
+        currentForce = hitMaxForce * forcePercentage * speedMultiplier;
         Debug.Log("Current force" + currentForce.ToString());
     }
 

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8921172072635807424}
   - component: {fileID: 8921172072635807425}
   - component: {fileID: 8921172072635807420}
-  - component: {fileID: 8921172072635807421}
   m_Layer: 0
   m_Name: SpeedUp
   m_TagString: PowerUp
@@ -107,8 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8aadeb2f5c441247a79cd8b64ad6b8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 2.3
-  waittime: 3
+  multiplier: 2
+  waittime: 5
+  countdown: {fileID: 0}
 --- !u!114 &8921172072635807420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,17 +123,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxRotationAngle: 90
   period: 0.2
-  rotationAxis: 0
---- !u!114 &8921172072635807421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8921172072635807427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc8eed2e59fb17b4c9cf8333d00ddbb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countdown: {fileID: 0}
+  rotationAxis: 2

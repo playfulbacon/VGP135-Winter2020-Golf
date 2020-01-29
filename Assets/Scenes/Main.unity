@@ -1967,13 +1967,18 @@ PrefabInstance:
     - target: {fileID: 8921172072635807425, guid: 87f2f4e9114dff14d9d0d80113ed3f63,
         type: 3}
       propertyPath: multiplier
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8921172072635807425, guid: 87f2f4e9114dff14d9d0d80113ed3f63,
         type: 3}
       propertyPath: waittime
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8921172072635807425, guid: 87f2f4e9114dff14d9d0d80113ed3f63,
+        type: 3}
+      propertyPath: countdown
+      value: 
+      objectReference: {fileID: 1406252119}
     - target: {fileID: 8921172072635807420, guid: 87f2f4e9114dff14d9d0d80113ed3f63,
         type: 3}
       propertyPath: rotationAxis
@@ -1984,5 +1989,6 @@ PrefabInstance:
       propertyPath: countdown
       value: 
       objectReference: {fileID: 1406252119}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8921172072635807421, guid: 87f2f4e9114dff14d9d0d80113ed3f63, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 87f2f4e9114dff14d9d0d80113ed3f63, type: 3}

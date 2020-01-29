@@ -13,11 +13,11 @@ public class ReduceHitPickupController : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag("Ball"))
-		{
-			Ball ball = other.GetComponentInParent<Ball>();
-			ball.ReduceHit();
-			gameObject.SetActive(false);
-		}
+        BallHitManager ballHitManager = other.GetComponentInParent<BallHitManager>();
+        if (ballHitManager)
+        {
+            ballHitManager.ReduceHit();
+            gameObject.SetActive(false);
+        }
 	}
 }

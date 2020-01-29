@@ -11,6 +11,10 @@ GameObject:
   - component: {fileID: 1050037476697080966}
   - component: {fileID: 1050037476697080967}
   - component: {fileID: 596376529657199940}
+  - component: {fileID: 7162045466247870679}
+  - component: {fileID: 483193259327258668}
+  - component: {fileID: 2353624563370867644}
+  - component: {fileID: 8438361491004320733}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -64,6 +68,57 @@ MonoBehaviour:
   aimPrefab: {fileID: 6651614994318895179, guid: 04d589b9bd9a41848a3d502a0c1e82c7,
     type: 3}
   currentForce: 0
+--- !u!114 &7162045466247870679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050037476697080960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b458536fec2a514faadd2d9d1fe29ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitCounterUI: {fileID: 0}
+--- !u!114 &483193259327258668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050037476697080960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cc2cc0e51f98e43850526b15c2c9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2353624563370867644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050037476697080960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a791e9ba4301034a8030893bf37e289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+--- !u!114 &8438361491004320733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050037476697080960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 352a37f79dbd3ef43b10f8441e2c335c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScoreUI: {fileID: 0}
 --- !u!1 &1050037477522633587
 GameObject:
   m_ObjectHideFlags: 0

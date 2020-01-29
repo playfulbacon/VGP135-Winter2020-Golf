@@ -21,13 +21,18 @@ public class Pickup_ResizeBall : Pickup
     public override void OnPickup(Ball ball)
     {
         base.OnPickup(ball);
+        
+        Rigidbody rb = ball.GetComponent<Rigidbody>();
+
         if (changeSize == ChangeSize.Increase)
         {
             ball.transform.localScale *= sizeMultiplier;
+            rb.mass *= sizeMultiplier;
         }
         else if (changeSize == ChangeSize.Decrease)
         {
             ball.transform.localScale /= sizeMultiplier;
+            rb.mass /= sizeMultiplier;
         }
     }
 }

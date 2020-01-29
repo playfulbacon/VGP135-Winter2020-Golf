@@ -20,11 +20,8 @@ public class Score : MonoBehaviour
     }
 
     public void SetScore(int hits)
-    {
-        for (int i = 0; i < hits; ++i)
-        {
-            HitScore -= 10;
-        }
+    {     
+        hits -= hits * 10;
 
         if (HitScore <= 0)
         {

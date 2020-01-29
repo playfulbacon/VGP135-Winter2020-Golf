@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GoalMenu : MonoBehaviour
 {
-    public string levelSelectSceneName;
     public GameObject goalMenuHolder;
 
 
@@ -25,8 +24,8 @@ public class GoalMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void LevelSelectButtonDown()
+    public void LevelSelectButtonDown(string LevelName)
     {
-        SceneManager.LoadScene(levelSelectSceneName);
+        SceneManager.LoadScene(LevelName);
     }
 }

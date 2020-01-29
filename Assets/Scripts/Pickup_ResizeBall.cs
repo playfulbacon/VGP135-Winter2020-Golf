@@ -17,18 +17,18 @@ public class Pickup_ResizeBall : Pickup
     {
         
     }
-    
-    private void OnTriggerEnter(Collider other)
+
+    public override void OnPickup(Ball ball)
     {
+        base.OnPickup(ball);
         if (changeSize == ChangeSize.Increase)
         {
-            other.transform.localScale *= sizeMultiplier;
+            ball.transform.localScale *= sizeMultiplier;
         }
         else if (changeSize == ChangeSize.Decrease)
         {
-            other.transform.localScale /= sizeMultiplier;
+            ball.transform.localScale /= sizeMultiplier;
         }
-
         Destroy(gameObject);
     }
 }

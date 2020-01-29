@@ -10,14 +10,12 @@ public class BallHealth : MonoBehaviour
     float currentHealth;
 
     public Action OnDeath;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         SetHealth(maxHealth);
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         

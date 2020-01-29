@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class HealBox : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float heal = 10.0f;
+    public float healthToAdd = 10.0f;
+
+    public void OnTriggerEnter(Collider other)
+    {
+        Ball ball = other.GetComponentInParent<Ball>();
+        if (ball)
+        {
+            ball.GetComponent<BallHealth>().AddHealth(healthToAdd);
+            Destroy(gameObject);
+        }
+    }
 }

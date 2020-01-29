@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 19066695}
   - component: {fileID: 19066694}
   m_Layer: 0
-  m_Name: PickUp
+  m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1957,7 +1957,7 @@ GameObject:
   - component: {fileID: 922817506}
   - component: {fileID: 922817507}
   m_Layer: 0
-  m_Name: Collectable
+  m_Name: Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1988,7 +1988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f38570bbde3914788f141b2b4caa07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeSize: 1
+  changeSize: 0
   sizeMultiplier: 2
 --- !u!4 &922817508
 Transform:

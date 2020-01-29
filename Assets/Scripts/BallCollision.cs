@@ -19,9 +19,18 @@ public class BallCollision : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Obstacle obstacle = collision.gameObject.GetComponent<Obstacle>();
+
+        HealBox healbox = collision.gameObject.GetComponent<HealBox>();
+
         if (obstacle != null)
         {
             GetComponent<BallHealth>().TakeDamage(obstacle.damage);
+        }
+
+        if (healbox != null)
+        {
+            GetComponent<BallHealth>().AddHealth(healbox.heal);
+            Destroy(collision.gameObject);
         }
     }
 }

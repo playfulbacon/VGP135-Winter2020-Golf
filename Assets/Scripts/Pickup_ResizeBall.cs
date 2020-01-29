@@ -8,7 +8,7 @@ public enum ChangeSize
     Decrease
 }
 
-public class PickupResizeBall : Pickup
+public class Pickup_ResizeBall : Pickup
 {
     public ChangeSize changeSize;
     public int sizeMultiplier;

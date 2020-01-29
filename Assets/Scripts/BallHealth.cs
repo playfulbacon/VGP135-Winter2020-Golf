@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using System;
 
 public class BallHealth : MonoBehaviour
 {
     public float maxHealth = 100f;
     float currentHealth;
+
+    public Action OnDeath;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,7 @@ public class BallHealth : MonoBehaviour
         SetHealth(currentHealth - damage);
         if (currentHealth <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            OnDeath?.Invoke();
         }
     }
 

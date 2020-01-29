@@ -25,6 +25,11 @@ public class BallHealth : MonoBehaviour
         SetHealth(currentHealth - damage);
     }
 
+    public void AddHealth(float add)
+    {
+        SetHealth(currentHealth + add);
+    }
+
     public void SetHealth(float health)
     {
         currentHealth = health;

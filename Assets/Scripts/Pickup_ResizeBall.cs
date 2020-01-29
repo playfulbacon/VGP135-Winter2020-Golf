@@ -29,6 +29,5 @@ public class Pickup_ResizeBall : Pickup
         {
             ball.transform.localScale /= sizeMultiplier;
         }
-        Destroy(gameObject);
     }
 }

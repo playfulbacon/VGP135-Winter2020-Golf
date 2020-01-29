@@ -13,8 +13,6 @@ public class Pickup_ResizeBall : Pickup
     public ChangeSize changeSize;
     public int sizeMultiplier;
 
-    Rigidbody rb;
-
     void Start()
     {
         
@@ -23,7 +21,8 @@ public class Pickup_ResizeBall : Pickup
     public override void OnPickup(Ball ball)
     {
         base.OnPickup(ball);
-        rb = ball.GetComponent<Rigidbody>();
+        
+        Rigidbody rb = ball.GetComponent<Rigidbody>();
 
         if (changeSize == ChangeSize.Increase)
         {

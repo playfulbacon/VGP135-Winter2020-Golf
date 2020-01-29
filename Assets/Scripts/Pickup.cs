@@ -14,7 +14,7 @@ public abstract class Pickup : MonoBehaviour
 
     }
 
-    public virtual void OnPickup()
+    public virtual void OnPickup(Ball collider)
     {
 
     }
@@ -24,7 +24,7 @@ public abstract class Pickup : MonoBehaviour
         Ball ball = other.GetComponentInParent<Ball>();
         if (ball)
         {
-            OnPickup();
+            OnPickup(ball);
             Destroy(gameObject);
         }
     }

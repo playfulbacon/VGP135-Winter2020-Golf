@@ -37,6 +37,7 @@ public class PowerUp : MonoBehaviour
         yield return new WaitForSeconds(waittime);
 
         modifyball.ResetStats();
+        activated = false;        
         //Debug.Log("Powerup Pickedup");
 
         Destroy(gameObject);

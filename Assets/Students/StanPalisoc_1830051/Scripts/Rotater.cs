@@ -37,7 +37,7 @@ public class Rotater : MonoBehaviour
         {
             myTime += Time.deltaTime;
             float phase = Mathf.Sin(myTime / period);
-            transform.localRotation = Quaternion.Euler(new Vector3(0,0,phase * maxRotationAngle));
+            transform.localRotation = Quaternion.Euler(new Vector3(phase * maxRotationAngle, phase * maxRotationAngle, phase * maxRotationAngle));
         }
     }
 }

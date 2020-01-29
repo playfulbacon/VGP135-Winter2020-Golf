@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class CountDown : MonoBehaviour
 {
-    private float timeLeft = 3.0f;
+    private float timeLeft;
     public Text countdown; 
     // Start is called before the first frame update
     void Start()
     {    
-       timeLeft = this.GetComponentInChildren<PowerUp>().waittime;
+       timeLeft = this.GetComponentInChildren<PowerUp>().waittime * 100.0f;
     }
 
     // Update is called once per frame
@@ -18,17 +18,18 @@ public class CountDown : MonoBehaviour
     {
         if (this.GetComponent<PowerUp>().isActive())
         {
+            countdown.text = ("" + timeLeft);
             StartCoroutine(DecrementTime());
         }
-        countdown.text = ("" + timeLeft);      
+        
     }
 
     IEnumerator DecrementTime()
     {
-        while(true)
+        while(timeLeft > 0)
         {
-            yield return new WaitForSeconds(1);
-            timeLeft--; 
+            timeLeft--;
+            yield return new WaitForSeconds(1);     
         }                   
         
     }

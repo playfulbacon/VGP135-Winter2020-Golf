@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PickupExample : Pickup
 {
+    GameObject Obstacle;
     void Start()
     {
         
@@ -19,4 +20,13 @@ public class PickupExample : Pickup
         base.OnPickup(ball);
         print("pickup example");
     }
+    public void OnCollisionEnter(Collider other)
+    {
+        if (other.CompareTag("Key"))
+        {
+            Obstacle = GameObject.FindGameObjectWithTag("obstacles");
+            Obstacle.SetActive(false);
+        }
+    }
+
 }

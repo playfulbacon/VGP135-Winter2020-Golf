@@ -1,41 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
-    public string startScene;
-    public GameObject startUI;
-    public GameObject loginUI;
-    public InputField inputName;
-    public Text text;
+    [SerializeField]
+    Button startButton;
 
-    private string playerName;
-
+    // Start is called before the first frame update
     void Start()
     {
-        startUI.SetActive(false);
-        loginUI.SetActive(true);
-
+        startButton.onClick.AddListener(StartGame);
     }
 
-    public void Login()
+    // Update is called once per frame
+    void Update()
     {
-        playerName = inputName.text;
-        loginUI.SetActive(false);
-        startUI.SetActive(true);
-        text.text = "Welcome " + playerName;
+        
     }
 
     public void StartGame()
     {
-        SceneManager.LoadScene(startScene);
+        SceneManager.LoadScene("Main");
     }
 
-    public string GetPlayerName()
-    {
-        return playerName;
-    }
 }

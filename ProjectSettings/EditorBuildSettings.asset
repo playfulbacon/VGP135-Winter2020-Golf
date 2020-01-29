@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: b818237ea9ebe6945b0dd234302d8eae
+  - enabled: 1
     path: Assets/Students/LeonVenceslauFreire_1830111/Main.unity
     guid: a7cc6be1b80f7e249a8544074812431a
   - enabled: 1

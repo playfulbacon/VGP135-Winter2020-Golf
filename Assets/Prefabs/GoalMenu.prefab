@@ -128,7 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad61b6dba269e0d43a8a24b5d780abe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSelectSceneName: LevelSelect
+  playAgainButton: {fileID: 5588813798751808669}
+  mainmenuButton: {fileID: 161515501555688945}
   goalMenuHolder: {fileID: 4394561949991961850}
 --- !u!1 &4394561949991961850
 GameObject:
@@ -407,3 +408,27 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 8415344701335109219}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5588813798751808669 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4127051947828859646, guid: ce4dc792537f80b40ad94c196b94b65a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8415344701335109219}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &161515501555688945 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8571649805140974482, guid: ce4dc792537f80b40ad94c196b94b65a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8415344701335109219}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

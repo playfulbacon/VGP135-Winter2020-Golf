@@ -1,16 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GoalMenu : MonoBehaviour
 {
-    public string levelSelectSceneName;
+    [SerializeField]
+    Button playAgainButton;
+
+    [SerializeField]
+    Button mainmenuButton;
     public GameObject goalMenuHolder;
 
     void Start()
     {
         SetGoalMenu(false);
+
+        playAgainButton.onClick.AddListener(PlayAgainButtonDown);
+        mainmenuButton.onClick.AddListener(ReturnToMainMenu);
     }
 
     public void SetGoalMenu(bool value)
@@ -20,11 +28,11 @@ public class GoalMenu : MonoBehaviour
 
     public void PlayAgainButtonDown()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+      
     }
 
-    public void LevelSelectButtonDown()
+    public void ReturnToMainMenu()
     {
-        SceneManager.LoadScene(levelSelectSceneName);
+        SceneManager.LoadScene("MainMenu");
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Pickup : MonoBehaviour
 {
+    [SerializeField]
+    ParticleSystem pickupParticles; 
     void Start()
     {
         
@@ -25,6 +27,10 @@ public abstract class Pickup : MonoBehaviour
         if (ball)
         {
             OnPickup(ball);
+            if(pickupParticles != null)
+            {
+                Instantiate(pickupParticles, transform.position, Quaternion.identity);
+            }
             Destroy(gameObject);
         }
     }

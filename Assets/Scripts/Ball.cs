@@ -6,7 +6,7 @@ using Unity.IO;
 [RequireComponent(typeof(Rigidbody))]
 public class Ball : MonoBehaviour
 {
-    Rigidbody rb;
+    Rigidbody rb;   
     [SerializeField]
     Transform aimPrefab;
     float hitMaxForce = 1000f;
@@ -68,5 +68,12 @@ public class Ball : MonoBehaviour
     public void Hit(Vector3 hitDirection)
     {
         rb.AddForce(hitDirection * currentForce);
+        AudioSource audiosource = GetComponent<AudioSource>();
+
+        if(audiosource)
+        {
+            audiosource.pitch = Mathf.Lerp(3f, 1f, currentForce / hitMaxForce);
+            audiosource.Play();
+        }
     }
 }

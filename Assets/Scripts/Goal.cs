@@ -17,6 +17,7 @@ public class Goal : MonoBehaviour
         {
             ball.GetComponent<Rigidbody>().isKinematic = true;
             FindObjectOfType<GoalMenu>()?.SetGoalMenu(true);
+            GetComponent<AudioSource>()?.Play();
         }
     }
 }

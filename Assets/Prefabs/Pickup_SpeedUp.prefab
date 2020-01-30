@@ -106,6 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec858b2f899f0147aedbe2061e32b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupParticles: {fileID: 3000021794896679837, guid: 1e168ed9f9666d648a66d0f96196ec35,
+    type: 3}
   multiplier: 3
 --- !u!114 &1032413852782456089
 MonoBehaviour:

@@ -7,12 +7,16 @@ using Unity.IO;
 public class Ball : MonoBehaviour
 {
     Rigidbody rb;
+
     [SerializeField]
     Transform aimPrefab;
+
     float hitMaxForce = 1000f;
     float speedMultiplier = 1f;
+
     [SerializeField]
     float currentForce = 0f;
+
     float forcePercentage = 0.0f;
     float maxForceDistance = 200.0f;
     float currentForceDistance;
@@ -68,5 +72,12 @@ public class Ball : MonoBehaviour
     public void Hit(Vector3 hitDirection)
     {
         rb.AddForce(hitDirection * currentForce);
+
+        AudioSource audioSource = GetComponent<AudioSource>();
+        if (audioSource)
+        {
+            audioSource.pitch = Mathf.Lerp(3f, 1f, currentForce / hitMaxForce);
+            audioSource.Play();
+        }
     }
 }

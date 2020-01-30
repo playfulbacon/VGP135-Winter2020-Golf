@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField]
+    int par = 3;
+
+    [SerializeField]
+    Text parText;
+
     private void Awake()
     {
        BallHealth[] ballHealths = FindObjectsOfType<BallHealth>();
@@ -12,6 +19,8 @@ public class LevelManager : MonoBehaviour
         {
             ballHealth.OnDeath += BallDeath;
         }
+
+        parText.text = "PAR " + par.ToString();
     }
     
     void BallDeath()

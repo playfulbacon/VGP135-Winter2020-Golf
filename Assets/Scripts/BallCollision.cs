@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class BallCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
+    BallHealth ballHealth;
+
     void Start()
     {
-        
+        ballHealth = GetComponent<BallHealth>();       
     }
 
     // Update is called once per frame
@@ -21,7 +22,7 @@ public class BallCollision : MonoBehaviour
         Obstacle obstacle = collision.gameObject.GetComponent<Obstacle>();
         if (obstacle != null)
         {
-            GetComponent<BallHealth>().TakeDamage(obstacle.damage);
+            ballHealth.TakeDamage(obstacle.damage);
         }
     }
 }

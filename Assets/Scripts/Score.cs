@@ -21,7 +21,7 @@ public class Score : MonoBehaviour
 
     public void SetScore(int hits)
     {     
-        hits -= hits * 10;
+        hits -= hits * 2;
 
         if (HitScore <= 0)
         {

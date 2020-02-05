@@ -19,6 +19,8 @@ public class BallCollision : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Obstacle obstacle = collision.gameObject.GetComponent<Obstacle>();
+
+
         if (obstacle != null)
         {
             GetComponent<BallHealth>().TakeDamage(obstacle.damage);

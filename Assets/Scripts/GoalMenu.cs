@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GoalMenu : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class GoalMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void LevelSelectButtonDown()
+    public void GoToNextLevel()
     {
         SceneManager.LoadScene(levelSelectSceneName);
     }

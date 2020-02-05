@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65931bd05261bd049971299c98db2756, type: 3}
   m_Name: LevelData_Level2
   m_EditorClassIdentifier: 
-  sceneName: Level_02
+  sceneName: LeonVenceslauFreire_Level_01
   uiName: Level 2
-  difficulty: 0
+  difficulty: 1

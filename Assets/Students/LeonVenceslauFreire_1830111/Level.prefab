@@ -1435,7 +1435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  distance: 2.5
+  distance: 3
   direction: 0
 --- !u!1 &8929246464628440592
 GameObject:

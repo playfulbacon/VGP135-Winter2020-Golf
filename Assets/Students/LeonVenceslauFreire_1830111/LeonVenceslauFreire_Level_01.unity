@@ -511,6 +511,16 @@ PrefabInstance:
       propertyPath: changeSize
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8929246464620827060, guid: fd699d5e59d45194ab9f914a6c41e2bc,
+        type: 3}
+      propertyPath: distance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929246464620827060, guid: fd699d5e59d45194ab9f914a6c41e2bc,
+        type: 3}
+      propertyPath: direction
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd699d5e59d45194ab9f914a6c41e2bc, type: 3}
 --- !u!1 &1335280330

@@ -6,26 +6,21 @@ using UnityEngine.UI;
 
 public class GoalMenu : MonoBehaviour
 {
-    public string levelSelectSceneName;
     public GameObject goalMenuHolder;
+    public Button playAgainButton;
+    public Button nextLevelButton;
 
     void Start()
     {
         SetGoalMenu(false);
+
+        LevelManager levelManager = FindObjectOfType<LevelManager>();
+        playAgainButton.onClick.AddListener(levelManager.RestartLevel);
+        nextLevelButton.onClick.AddListener(levelManager.GoToNextLevel);
     }
 
     public void SetGoalMenu(bool value)
     {
         goalMenuHolder.SetActive(value);
-    }
-
-    public void PlayAgainButtonDown()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    public void GoToNextLevel()
-    {
-        SceneManager.LoadScene(levelSelectSceneName);
     }
 }

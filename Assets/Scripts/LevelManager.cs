@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public string defaultSceneName = "MainMenu";
+
     private void Awake()
     {
        BallHealth[] ballHealths = FindObjectsOfType<BallHealth>();
@@ -16,16 +18,30 @@ public class LevelManager : MonoBehaviour
     
     void BallDeath()
     {
+        RestartLevel();
+    }
+
+    public void RestartLevel()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    void Start()
+    public void GoToNextLevel()
     {
-        
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (sceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            sceneIndex++;
+        }
+        else
+        {
+            sceneIndex = SceneManager.GetSceneByName(defaultSceneName).buildIndex;
+        }
+        SceneManager.LoadScene(sceneIndex);
     }
-    
-    void Update()
+
+    public static void LoadScene(string sceneName)
     {
-        
+        SceneManager.LoadScene(sceneName);
     }
 }

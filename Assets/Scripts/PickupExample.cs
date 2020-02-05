@@ -20,9 +20,10 @@ public class PickupExample : Pickup
         base.OnPickup(ball);
         print("pickup example");
     }
-    public void OnCollisionEnter(Collider other)
+
+    public void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Key"))
+        if (other.gameObject.CompareTag("Key"))
         {
             Obstacle = GameObject.FindGameObjectWithTag("obstacles");
             Obstacle.SetActive(false);

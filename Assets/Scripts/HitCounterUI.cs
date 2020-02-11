@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class HitCounterUI : MonoBehaviour
 {
+
     [SerializeField]
     UnityEngine.UI.Text hitCounterText;
 
@@ -13,13 +15,9 @@ public class HitCounterUI : MonoBehaviour
         SetHitCounter(0);
     }
 
-    void Start()
-    {
-        
-    }
-
     void SetHitCounter(int hits)
     {
-        hitCounterText.text = hits.ToString();
+        hitCounterText.text = hits.ToString();   
     }
+
 }

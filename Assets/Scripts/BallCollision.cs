@@ -25,5 +25,6 @@ public class BallCollision : MonoBehaviour
         {
             ballHealth.TakeDamage(obstacle.damage);
         }
+
     }
 }

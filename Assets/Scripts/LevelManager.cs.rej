@@ -1,0 +1,9 @@
+diff a/Assets/Scripts/LevelManager.cs b/Assets/Scripts/LevelManager.cs	(rejected hunks)
+@@ -19,6 +19,7 @@
+     void BallDeath()
+     {
+         FindObjectOfType<GameOverMenu>()?.SetGameOverMenu(true);
++        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+     }
+ 
+     public void GoToNextScene()

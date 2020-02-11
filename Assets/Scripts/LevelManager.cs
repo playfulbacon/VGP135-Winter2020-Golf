@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
     
     void BallDeath()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        FindObjectOfType<GameOverMenu>()?.SetGameOverMenu(true);
     }
 
     public void GoToNextScene()
@@ -47,13 +47,8 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    void Start()
+    public void SelectLevel()
     {
-        
-    }
-    
-    void Update()
-    {
-        
+        SceneManager.LoadScene("LevelSelect");
     }
 }

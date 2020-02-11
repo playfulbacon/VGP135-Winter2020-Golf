@@ -1334,11 +1334,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 386068658485883899, guid: e29bbcd34106d5e44ac1586baf243300,
-        type: 3}
-      propertyPath: defaultSceneName
-      value: Level_01
-      objectReference: {fileID: 0}
     - target: {fileID: 8368771397499410075, guid: e29bbcd34106d5e44ac1586baf243300,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1368,6 +1363,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955863573374566654, guid: e29bbcd34106d5e44ac1586baf243300,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187997671727226081, guid: e29bbcd34106d5e44ac1586baf243300,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362581821527393007, guid: e29bbcd34106d5e44ac1586baf243300,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.9716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362581821527393007, guid: e29bbcd34106d5e44ac1586baf243300,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.9716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362581821527393007, guid: e29bbcd34106d5e44ac1586baf243300,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.9716981
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e29bbcd34106d5e44ac1586baf243300, type: 3}

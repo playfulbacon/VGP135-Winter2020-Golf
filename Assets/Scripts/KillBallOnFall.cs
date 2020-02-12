@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class KillBallOnFall : MonoBehaviour
 {
-    // Start is called before the first frame update
-
-
-    // Update is called once per frame
+    public float DeathY = -3;
     void Update()
     {
-        if(transform.position.y < -3)
+        if(transform.position.y < DeathY)
         {
             FindObjectOfType<GameOverMenu>().SetGameOverMenu(true);
-            
         }
     }
 }

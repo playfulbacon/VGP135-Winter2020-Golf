@@ -11,6 +11,7 @@ public class GoalMenu : MonoBehaviour
     public Button playAgainButton;
     public Button nextLevelButton;
     private LevelManager levelManager;
+    int finalScore;
 
     void Start()
     {
@@ -36,16 +37,24 @@ public class GoalMenu : MonoBehaviour
         {
             if ((int)levelManager.GetScore() > 3)
             {
-                goalMenuHolder.GetComponentInChildren<Text>().text = "+" + ((int)(levelManager.GetScore())).ToString();
+                goalMenuHolder.GetComponentInChildren<Text>().text = "+" + (int)(levelManager.GetScore()); ;
             }
             else if ((int)levelManager.GetScore() < -3)
             {
-                goalMenuHolder.GetComponentInChildren<Text>().text = "-" + ((int)(levelManager.GetScore())).ToString();
+                goalMenuHolder.GetComponentInChildren<Text>().text = "-" + (int)(levelManager.GetScore()); ;
             }
             else
             {
                 goalMenuHolder.GetComponentInChildren<Text>().text = levelManager.GetScore().ToString();
             }
         }
+        finalScore = (int)levelManager.GetScore();
     }
+
+    public int GetFinalScore()
+    {
+        return finalScore;
+    }
+
+  
 }

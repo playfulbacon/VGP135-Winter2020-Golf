@@ -30,6 +30,11 @@ public class BallHealth : MonoBehaviour
         }
     }
 
+    public void AddHealth(float add)
+    {
+        SetHealth(currentHealth + add);
+    }
+
     public void SetHealth(float health)
     {
         currentHealth = health;

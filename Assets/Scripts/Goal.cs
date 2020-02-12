@@ -13,8 +13,14 @@ public class Goal : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         Ball ball = other.GetComponentInParent<Ball>();
+        AudioSource audioSource = GetComponent<AudioSource>();
+
         if (ball)
         {
+            if (audioSource)
+            {
+                GetComponent<AudioSource>()?.Play();
+            }
             ball.GetComponent<Rigidbody>().isKinematic = true;
             FindObjectOfType<GoalMenu>()?.SetGoalMenu(true);
         }

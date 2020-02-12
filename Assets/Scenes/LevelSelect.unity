@@ -478,10 +478,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelSelectButton: {fileID: 1533816117}
   levels:
-  - {fileID: 11400000, guid: 1af80f410b0336b4f9b56343d50b94fa, type: 2}
-  - {fileID: 11400000, guid: 241577f13143a374582f5e92ea80ad97, type: 2}
   - {fileID: 11400000, guid: a810936e806c0634b80983438333d941, type: 2}
+  - {fileID: 11400000, guid: 241577f13143a374582f5e92ea80ad97, type: 2}
+  - {fileID: 11400000, guid: 1af80f410b0336b4f9b56343d50b94fa, type: 2}
   - {fileID: 11400000, guid: cc73d54338a46e84da17f3c0c7c955c2, type: 2}
+  - {fileID: 11400000, guid: a9eb715f2e7ca1746b5b2f6066a750df, type: 2}
 --- !u!4 &1084564772
 Transform:
   m_ObjectHideFlags: 0

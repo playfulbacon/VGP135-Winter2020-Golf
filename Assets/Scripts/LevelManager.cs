@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
     void BallDeath()
     {
         FindObjectOfType<GameOverMenu>()?.SetGameOverMenu(true);
+       
     }
 
     public void GoToNextScene()

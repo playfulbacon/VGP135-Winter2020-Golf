@@ -6,6 +6,8 @@ public class GameOverMenu : MonoBehaviour
     public GameObject GameOverMenuHolder;
     public Button playAgainButton;
     public Button selectLevelButton;
+    [SerializeField]
+    public bool flag; 
 
     void Start()
     {
@@ -18,6 +20,7 @@ public class GameOverMenu : MonoBehaviour
 
     public void SetGameOverMenu(bool setActive)
     {
+        flag = setActive;
         GameOverMenuHolder.SetActive(setActive);
     }
 }

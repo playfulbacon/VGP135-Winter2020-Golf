@@ -10,7 +10,7 @@ public class BallHealth : MonoBehaviour
     float currentHealth;
 
     public Action OnDeath;
-    
+    private GameOverMenu gameOverMenu;
     void Start()
     {
         SetHealth(maxHealth);
@@ -26,6 +26,7 @@ public class BallHealth : MonoBehaviour
         SetHealth(currentHealth - damage);
         if (currentHealth <= 0)
         {
+            GetComponent<Ball>().gameObject.SetActive(false);
             OnDeath?.Invoke();
         }
     }
@@ -35,5 +36,10 @@ public class BallHealth : MonoBehaviour
         currentHealth = health;
 
         Healthbar.Instance.slider.value = currentHealth / maxHealth;
+    }
+
+    public float GetHealth()
+    {
+        return currentHealth;
     }
 }

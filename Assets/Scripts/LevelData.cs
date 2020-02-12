@@ -9,4 +9,5 @@ public class LevelData : ScriptableObject
     public string sceneName;
     public string uiName;
     public Difficulty difficulty;
+    public int par;
 }

@@ -13,7 +13,7 @@ public class GameOverMenu : MonoBehaviour
 
         LevelManager levelManager = FindObjectOfType<LevelManager>();
         playAgainButton.onClick.AddListener(levelManager.RestartLevel);
-        selectLevelButton.onClick.AddListener(levelManager.SelectLevel);
+        selectLevelButton.onClick.AddListener(levelManager.GoToLevelSelect);
     }
 
     public void SetGameOverMenu(bool setActive)

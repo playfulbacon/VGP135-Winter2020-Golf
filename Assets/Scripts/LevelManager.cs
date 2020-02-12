@@ -43,7 +43,7 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void SelectLevel()
+    public void GoToLevelSelect()
     {
         SceneManager.LoadScene("LevelSelect");
     }

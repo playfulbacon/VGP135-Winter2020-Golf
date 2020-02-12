@@ -1,38 +1,15 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public enum Score
-{
-    [Description("Albatross")]
-    Albatross = -3,
-    [Description("Eagle")]
-    Eagle = -2,
-    [Description("Birdie")]
-    Birdie = -1,
-    [Description("Par")]
-    Par = 0,
-    [Description("Bogie")]
-    Bogie = 1,
-    [Description("Double Bogie")]
-    DoubleBogie = 2,
-    [Description("Triple Bogie")]
-    TripleBogie = 3
-}
 
 public class LevelManager : MonoBehaviour
 {
     public string defaultSceneName = "MainMenu";
-    public int parValue = 0;
-    public int currentHit = 0;
 
     private void Awake()
     {
-        BallHealth[] ballHealths = FindObjectsOfType<BallHealth>();
-        FindObjectOfType<HitCounter>().OnSetHits += SetHitCounter;
+       BallHealth[] ballHealths = FindObjectsOfType<BallHealth>();
         foreach (BallHealth ballHealth in ballHealths)
         {
             ballHealth.OnDeath += BallDeath;
@@ -65,11 +42,4 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
-
-    public Score GetScore()
-    {
-        return (Score)(currentHit - parValue);
-    }
-
-    void SetHitCounter(int hits) => currentHit++;
 }

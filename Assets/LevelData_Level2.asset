@@ -15,3 +15,5 @@ MonoBehaviour:
   sceneName: LeonVenceslauFreire_Level_01
   uiName: Level 2
   difficulty: 1
+  par: 0
+  levelimage: {fileID: 21300000, guid: 02eefcc5a9b6b774c8b7716ab5442493, type: 3}

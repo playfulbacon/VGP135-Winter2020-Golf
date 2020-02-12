@@ -15,3 +15,5 @@ MonoBehaviour:
   sceneName: JaimeZeda_Level
   uiName: Level_04
   difficulty: 2
+  par: 0
+  levelimage: {fileID: 21300000, guid: d4350424aab99ac42b9b8261f65ee678, type: 3}

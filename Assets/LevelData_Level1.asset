@@ -15,3 +15,5 @@ MonoBehaviour:
   sceneName: Level_01
   uiName: Level 1
   difficulty: 0
+  par: 0
+  levelimage: {fileID: 21300000, guid: 2aab7031e530e664c97bebc62e6beaee, type: 3}

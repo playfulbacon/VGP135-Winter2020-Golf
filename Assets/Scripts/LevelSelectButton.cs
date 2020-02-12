@@ -7,4 +7,5 @@ public class LevelSelectButton : MonoBehaviour
 {
     public Text levelNameText;
     public Text difficultyText;
+    public Image levelImage;
 }

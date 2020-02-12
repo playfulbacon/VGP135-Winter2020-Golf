@@ -14,7 +14,7 @@ public class LevelSelect : MonoBehaviour
         foreach(LevelData levelData in levels)
         {
             LevelSelectButton button = Instantiate(levelSelectButton, levelSelectButton.transform.parent);
-
+            button.levelImage.sprite = levelData.levelimage;
             button.levelNameText.text = levelData.uiName;
             button.difficultyText.text = levelData.difficulty.ToString();
 

@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class Goal : MonoBehaviour
 {
+    private GoalMenu goalMenu;
+
     void Start()
     {
-
+        goalMenu = FindObjectOfType<GoalMenu>();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -22,7 +24,8 @@ public class Goal : MonoBehaviour
                 GetComponent<AudioSource>()?.Play();
             }
             ball.GetComponent<Rigidbody>().isKinematic = true;
-            FindObjectOfType<GoalMenu>()?.SetGoalMenu(true);
+            goalMenu?.SetScoreText();
+            goalMenu?.SetGoalMenu(true);
         }
     }
 }

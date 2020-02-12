@@ -26,13 +26,10 @@ public enum Score
 public class LevelManager : MonoBehaviour
 {
     public string defaultSceneName = "MainMenu";
-    public int parValue = 0;
-    public int currentHit = 0;
 
     private void Awake()
     {
         BallHealth[] ballHealths = FindObjectsOfType<BallHealth>();
-        FindObjectOfType<HitCounter>().OnSetHits += SetHitCounter;
         foreach (BallHealth ballHealth in ballHealths)
         {
             ballHealth.OnDeath += BallDeath;
@@ -68,8 +65,6 @@ public class LevelManager : MonoBehaviour
 
     public Score GetScore()
     {
-        return (Score)(currentHit - parValue);
+        return (Score)(FindObjectOfType<HitCounter>().Hits - FindObjectOfType<Level>().levelData.par);
     }
-
-    void SetHitCounter(int hits) => currentHit++;
 }

@@ -28,7 +28,7 @@ public class GoalMenu : MonoBehaviour
 
     public void SetScoreText()
     {
-        if (levelManager.currentHit == 1)
+        if (FindObjectOfType<HitCounter>().Hits == 1)
         {
             goalMenuHolder.GetComponentInChildren<Text>().text = "Hole-In-One";
         }

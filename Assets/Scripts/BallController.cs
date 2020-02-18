@@ -18,6 +18,9 @@ public class BallController : MonoBehaviour
 
     int hits = 0;
 
+    CameraRotator cameraRotator;
+    bool controllerEnabled = true;
+
     void Start()
     {
         balls = FindObjectsOfType<Ball>();    
@@ -29,10 +32,17 @@ public class BallController : MonoBehaviour
             OnDrag += ball.Drag;
             OnHit += ball.Hit;
         }
+
+        cameraRotator = FindObjectOfType<CameraRotator>();
     }
 
     void LateUpdate()
     {
+        if (!controllerEnabled)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             Time.timeScale = aimingSlowdown;
@@ -54,8 +64,9 @@ public class BallController : MonoBehaviour
                     OnStartDrag?.Invoke();
                 }
 
-                hitDirection = -(mousePos - dragStartPos).normalized;
-                hitDirection = new Vector3(hitDirection.x, 0f, hitDirection.y);
+                hitDirection = -(mousePos - dragStartPos);
+                hitDirection = new Vector3(hitDirection.x, 0f, hitDirection.y).normalized;
+                hitDirection = Quaternion.Euler(0.0f, cameraRotator.GetCurrentYRotation(), 0.0f) * hitDirection;
             }
         }
 
@@ -80,5 +91,10 @@ public class BallController : MonoBehaviour
             isPressed = false;
             isDragging = false;
         }
+    }
+
+    public void SetEnabled(bool enabled)
+    {
+        controllerEnabled = enabled;
     }
 }

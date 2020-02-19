@@ -15,6 +15,7 @@ public class InputController : MonoBehaviour
     {
         cameraRotator = FindObjectOfType<CameraRotator>();
         ballController = FindObjectOfType<BallController>();
+        SetRotatingCam(false);
     }
 
     private void Update()
@@ -23,9 +24,14 @@ public class InputController : MonoBehaviour
 
         if (isRotatingCam != _isRotatingCam)
         {
-            isRotatingCam = _isRotatingCam;
-            cameraRotator.SetEnabled(isRotatingCam);
-            ballController.SetEnabled(!isRotatingCam);
+            SetRotatingCam(_isRotatingCam);
         }
+    }
+
+    private void SetRotatingCam(bool set)
+    {
+        isRotatingCam = set;
+        cameraRotator.SetEnabled(isRotatingCam);
+        ballController.SetEnabled(!isRotatingCam);
     }
 }

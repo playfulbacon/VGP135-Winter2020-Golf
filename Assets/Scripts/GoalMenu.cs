@@ -10,7 +10,7 @@ public class GoalMenu : MonoBehaviour
     public GameObject goalMenuHolder;
     public Button playAgainButton;
     public Button nextLevelButton;
-    private LevelManager levelManager;
+    private ScoreManager scoreManager;
     private bool isGoalMenuActive { get { return goalMenuHolder.gameObject.activeSelf; } }	    int finalScore;
     private Text goalText;
 
@@ -19,7 +19,9 @@ public class GoalMenu : MonoBehaviour
         SetGoalMenu(false);
         goalText = goalMenuHolder.GetComponentInChildren<Text>();
         FindObjectOfType<HighScoreUI>().isGoalReached = false;
-        levelManager = FindObjectOfType<LevelManager>();
+        scoreManager = FindObjectOfType<ScoreManager>();
+
+        LevelManager levelManager = FindObjectOfType<LevelManager>();
         playAgainButton.onClick.AddListener(levelManager.RestartLevel);
         nextLevelButton.onClick.AddListener(levelManager.GoToNextScene);
     }
@@ -38,17 +40,17 @@ public class GoalMenu : MonoBehaviour
         }
         else
         {
-            if ((int)levelManager.GetScore() > 3)
+            if ((int)scoreManager.GetScore() > 3)
             {
-                goalMenuHolder.GetComponentInChildren<Text>().text = "+" + (int)(levelManager.GetScore()); ;
+                goalMenuHolder.GetComponentInChildren<Text>().text = "+" + (int)(scoreManager.GetScore()); ;
             }
-            else if ((int)levelManager.GetScore() < -3)
+            else if ((int)scoreManager.GetScore() < -3)
             {
-                goalMenuHolder.GetComponentInChildren<Text>().text = "-" + (int)(levelManager.GetScore()); ;
+                goalMenuHolder.GetComponentInChildren<Text>().text = "-" + (int)(scoreManager.GetScore()); ;
             }
             else
             {
-                goalMenuHolder.GetComponentInChildren<Text>().text = levelManager.GetScore().ToString();
+                goalMenuHolder.GetComponentInChildren<Text>().text = scoreManager.GetScore().ToString();
             }
         }
     }

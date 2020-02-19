@@ -71,7 +71,9 @@ public class BallController : MonoBehaviour
 
                 hitDirection = -(mousePos - dragStartPos);
                 hitDirection = new Vector3(hitDirection.x, 0f, hitDirection.y).normalized;
-                hitDirection = Quaternion.Euler(0.0f, cameraRotator.GetCurrentYRotation(), 0.0f) * hitDirection;
+
+                if (cameraRotator)
+                    hitDirection = Quaternion.Euler(0.0f, cameraRotator.GetCurrentYRotation(), 0.0f) * hitDirection;
             }
         }
 

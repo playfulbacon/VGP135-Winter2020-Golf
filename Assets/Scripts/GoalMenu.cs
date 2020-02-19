@@ -11,14 +11,35 @@ public class GoalMenu : MonoBehaviour
     public Button playAgainButton;
     public Button nextLevelButton;
     private LevelManager levelManager;
-    private LevelSelect levelSelect;
+    private bool isGoalMenuActive { get { return goalMenuHolder.gameObject.activeSelf; } }
+    private Text goalText;
 
     void Start()
     {
         SetGoalMenu(false);
+        goalText = goalMenuHolder.GetComponentInChildren<Text>();
 
         levelManager = FindObjectOfType<LevelManager>();
-        levelSelect = FindObjectOfType<LevelSelect>();
+        playAgainButton.onClick.AddListener(levelManager.RestartLevel);
+        nextLevelButton.onClick.AddListener(levelManager.GoToNextScene);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && !isGoalMenuActive)
+        {
+            Time.timeScale = 0;
+            goalText.gameObject.SetActive(false);
+            nextLevelButton.gameObject.SetActive(false);
+            SetGoalMenu(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && isGoalMenuActive)
+        {
+            Time.timeScale = 1;
+            goalText.gameObject.SetActive(true);
+            nextLevelButton.gameObject.SetActive(true);
+            SetGoalMenu(false);
+        }
     }
 
     public void SetGoalMenu(bool value)

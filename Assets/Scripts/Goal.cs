@@ -30,6 +30,8 @@ public class Goal : MonoBehaviour
      
             goalMenu?.SetScoreText();
             goalMenu?.SetGoalMenu(true);
+
+            FindObjectOfType<InputController>().enabled = false;
         }
     }
 }

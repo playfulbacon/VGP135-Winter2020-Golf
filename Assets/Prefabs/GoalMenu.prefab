@@ -187,7 +187,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1200767815627783074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad61b6dba269e0d43a8a24b5d780abe8, type: 3}
+  m_Script: {fileID: 11500000, guid: a3c1ec031d1d23641b06084ebcbd5ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   goalMenuHolder: {fileID: 4394561949991961850}

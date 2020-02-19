@@ -16,7 +16,7 @@ public class GoalMenu : MonoBehaviour
     void Start()
     {
         SetGoalMenu(false);
-        FindObjectOfType<HighScoreUI>().isGoalReached = false;
+
         levelManager = FindObjectOfType<LevelManager>();
         playAgainButton.onClick.AddListener(levelManager.RestartLevel);
         nextLevelButton.onClick.AddListener(levelManager.GoToNextScene);
@@ -25,7 +25,6 @@ public class GoalMenu : MonoBehaviour
     public void SetGoalMenu(bool value)
     {
         goalMenuHolder.SetActive(value);
-        FindObjectOfType<HighScoreUI>().isGoalReached = true;
     }
 
     public void SetScoreText()
@@ -49,6 +48,13 @@ public class GoalMenu : MonoBehaviour
                 goalMenuHolder.GetComponentInChildren<Text>().text = levelManager.GetScore().ToString();
             }
         }
-
+        finalScore = (int)levelManager.GetScore();
     }
+
+    public int GetFinalScore()
+    {
+        return finalScore;
+    }
+
+  
 }

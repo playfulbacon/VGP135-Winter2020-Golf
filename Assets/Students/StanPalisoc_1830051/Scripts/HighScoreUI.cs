@@ -1,63 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class HighScoreUI : MonoBehaviour
 {
     [SerializeField]
     UnityEngine.UI.Text highScoreText;
-
-    [SerializeField]
-    private int highScore = 100;
-    [SerializeField]
-    private int currentScore;
-    private Scene scene; 
-    public bool isGoalReached { get; set; }
-    private LevelManager levelManager;
     
+    private int highScore = 10;
+    private int currentScore; 
+    private GoalMenu goalManager;
 
     private void Awake()
     {
-        scene = SceneManager.GetActiveScene();
-        levelManager = FindObjectOfType<LevelManager>();
-        Debug.Log(scene.buildIndex.ToString());
-
-    }
-
-    private void Start()
-    {
-        if (PlayerPrefs.HasKey("HighScore" + scene.buildIndex.ToString()))
-        {
-            highScore = PlayerPrefs.GetInt("HighScore" + scene.buildIndex.ToString());
-        }
-        else
-        {
-            highScore = 100;
-        }
+        highScore = PlayerPrefs.GetInt("highScore", highScore);
+        goalManager = FindObjectOfType<GoalMenu>();
+        currentScore = goalManager.GetFinalScore();
+   
         DisplayHighScore();
-    }
-
-    private void Update()
-    {
-        currentScore = (int)(levelManager.GetScore());
-        UpdateScore();
+     
     }
 
     public void DisplayHighScore()
     {
-        highScoreText.text = "HighScore: " + PlayerPrefs.GetInt("HighScore" + scene.buildIndex.ToString());
-    }   
+        CheckScore();
+        highScoreText.text = "HighScore: " + highScore.ToString();
+    }
 
-    public void UpdateScore()
+
+    private void OnDestroy()
     {
-        if (isGoalReached)
-        {           
+        highScoreText.text = "HighScore: " + highScore.ToString();
+    }
+
+    public void CheckScore()
+    {
+        if (FindObjectOfType<GoalMenu>().isActiveAndEnabled)
+        {
             if (currentScore < highScore)
             {
                 highScore = currentScore;
-                PlayerPrefs.SetInt("HighScore" + scene.buildIndex.ToString(), highScore);
-                PlayerPrefs.Save();
             }
         }
     }

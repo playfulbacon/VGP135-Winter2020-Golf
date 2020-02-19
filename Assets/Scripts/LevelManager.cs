@@ -6,7 +6,6 @@ using System.ComponentModel;
 
 public class LevelManager : MonoBehaviour
 {
-    
     public enum Score
     {
         [Description("Albatross")]
@@ -71,6 +70,11 @@ public class LevelManager : MonoBehaviour
     
     public Score GetScore()
     {
-        return (Score)FindObjectOfType<HitCounter>().Hits - FindObjectOfType<LevelSelect>().selectedLevel.par;
+        LevelSelect levelSelect = FindObjectOfType<LevelSelect>();
+        int par = 4;
+        if (levelSelect)
+            par = levelSelect.selectedLevel.par;
+
+        return (Score)FindObjectOfType<HitCounter>().Hits - par;
     }
 }

@@ -20,6 +20,6 @@ public class HitCounterUI : MonoBehaviour
 
     void SetHitCounter(int hits)
     {
-        hitCounterText.text = "Hits: " + hits.ToString();
+        hitCounterText.text = hits.ToString();
     }
 }

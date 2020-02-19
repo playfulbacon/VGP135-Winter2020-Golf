@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Test : MonoBehaviour
+public class Pickup_Key : Pickup
 {
+    [SerializeField]
+    GameObject wall;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +19,10 @@ public class Test : MonoBehaviour
         
     }
 
-    public void TestClick()
+    public override void OnPickup(Ball ball)
     {
-        print("testy test");
-    }
-
-    public void GoToScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
+        base.OnPickup(ball);
+        // turn off the wall
+        wall.SetActive(false);
     }
 }

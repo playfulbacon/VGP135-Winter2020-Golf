@@ -69,11 +69,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7232979585227150936}
     m_Modifications:
-    - target: {fileID: 6712210062972845314, guid: 57e4e9e178fd10a4dbfbd4b7fb2bdb09,
-        type: 3}
-      propertyPath: m_Name
-      value: Button
-      objectReference: {fileID: 0}
     - target: {fileID: 6712210062972845317, guid: 57e4e9e178fd10a4dbfbd4b7fb2bdb09,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -179,15 +174,20 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6712210062972845314, guid: 57e4e9e178fd10a4dbfbd4b7fb2bdb09,
+        type: 3}
+      propertyPath: m_Name
+      value: Button
+      objectReference: {fileID: 0}
     - target: {fileID: 6712210062972845316, guid: 57e4e9e178fd10a4dbfbd4b7fb2bdb09,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7232979585227150937}
     - target: {fileID: 6712210062972845316, guid: 57e4e9e178fd10a4dbfbd4b7fb2bdb09,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MainMenuButtonDown
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57e4e9e178fd10a4dbfbd4b7fb2bdb09, type: 3}
@@ -204,11 +204,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7232979585227150936}
     m_Modifications:
-    - target: {fileID: 6712210062972845314, guid: 57e4e9e178fd10a4dbfbd4b7fb2bdb09,
-        type: 3}
-      propertyPath: m_Name
-      value: Button
-      objectReference: {fileID: 0}
     - target: {fileID: 6712210062972845317, guid: 57e4e9e178fd10a4dbfbd4b7fb2bdb09,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -313,6 +308,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6712210062972845314, guid: 57e4e9e178fd10a4dbfbd4b7fb2bdb09,
+        type: 3}
+      propertyPath: m_Name
+      value: Button
       objectReference: {fileID: 0}
     - target: {fileID: 6712210062972845316, guid: 57e4e9e178fd10a4dbfbd4b7fb2bdb09,
         type: 3}

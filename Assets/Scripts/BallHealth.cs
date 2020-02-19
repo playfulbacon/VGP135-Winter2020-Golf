@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class BallHealth : MonoBehaviour
 {
     public float maxHealth = 100f;
     float currentHealth;
 
-    // Start is called before the first frame update
+    public Action OnDeath;
+    
     void Start()
     {
         SetHealth(maxHealth);
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         
@@ -23,6 +24,15 @@ public class BallHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         SetHealth(currentHealth - damage);
+        if (currentHealth <= 0)
+        {
+            OnDeath?.Invoke();
+        }
+    }
+
+    public void AddHealth(float add)
+    {
+        SetHealth(currentHealth + add);
     }
 
     public void SetHealth(float health)

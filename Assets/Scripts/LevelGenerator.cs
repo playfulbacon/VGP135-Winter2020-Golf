@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public float minRandomGoalRange = 5f;
-    public float maxRandomGoalRange = 5f;
-    public float minObstacleRange = 5f;
-    public float maxObstacleRange = 5f;
     public GameObject ballPrefab;
     public GameObject goalPrefab;
     public GameObject planePrefab;

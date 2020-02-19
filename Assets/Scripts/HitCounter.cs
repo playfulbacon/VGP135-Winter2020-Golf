@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using UnityEngine.SceneManagement;
 public class HitCounter : MonoBehaviour
 {
     public Action<int> OnSetHits;
     public int Hits { get; private set; }
-
+    public int HitMax = 15;
+    public Action OnDeath;
     private void Awake()
     {
         FindObjectOfType<BallController>().OnHit += Hit;
@@ -15,7 +16,7 @@ public class HitCounter : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Hit(Vector3 hitDirection)
@@ -27,5 +28,9 @@ public class HitCounter : MonoBehaviour
     {
         Hits = set;
         OnSetHits?.Invoke(Hits);
+        if (Hits >= HitMax)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }

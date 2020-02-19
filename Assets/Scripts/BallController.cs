@@ -5,7 +5,7 @@ using System;
 
 public class BallController : MonoBehaviour
 {
-    public Action OnTouchDown, OnStartDrag, OnTouchUp;
+    public Action OnTouchDown, OnStartDrag, OnTouchUp, OnMouseUp;
     public Action<Vector3, float> OnDrag;
     public Action<Vector3> OnHit;
 
@@ -31,6 +31,7 @@ public class BallController : MonoBehaviour
             OnStartDrag += ball.StartDrag;
             OnDrag += ball.Drag;
             OnHit += ball.Hit;
+            OnMouseUp += ball.MouseUp;
         }
 
         cameraRotator = FindObjectOfType<CameraRotator>();
@@ -40,6 +41,10 @@ public class BallController : MonoBehaviour
     {
         if (!controllerEnabled)
         {
+            isPressed = false;
+            isDragging = false;
+            OnDrag?.Invoke(Vector3.forward, 0.0f);
+            OnMouseUp?.Invoke();
             return;
         }
 

@@ -7,10 +7,13 @@ public class LevelSelect : MonoBehaviour
 {
     public LevelSelectButton levelSelectButton;
     public LevelData[] levels;
+    public LevelData selectedLevel;
 
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
+
         foreach(LevelData levelData in levels)
         {
             LevelSelectButton button = Instantiate(levelSelectButton, levelSelectButton.transform.parent);
@@ -18,7 +21,7 @@ public class LevelSelect : MonoBehaviour
             button.levelNameText.text = levelData.uiName;
             button.difficultyText.text = levelData.difficulty.ToString();
 
-            button.GetComponent<Button>().onClick.AddListener(delegate { LevelManager.LoadScene(levelData.sceneName); });
+            button.GetComponent<Button>().onClick.AddListener(delegate { SelectLevel(levelData); });
         }
 
         levelSelectButton.gameObject.SetActive(false);
@@ -28,5 +31,17 @@ public class LevelSelect : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void SelectLevel(LevelData levelData)
+    {
+        selectedLevel = levelData;
+        LevelManager.LoadScene(levelData.sceneName);
+        gameObject.SetActive(false);
+    }
+
+    public void SetLevelSelect(bool value)
+    {
+        gameObject.SetActive(value);
     }
 }

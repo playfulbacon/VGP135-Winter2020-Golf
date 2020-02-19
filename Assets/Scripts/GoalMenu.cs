@@ -11,14 +11,14 @@ public class GoalMenu : MonoBehaviour
     public Button playAgainButton;
     public Button nextLevelButton;
     private LevelManager levelManager;
+    private LevelSelect levelSelect;
 
     void Start()
     {
         SetGoalMenu(false);
 
         levelManager = FindObjectOfType<LevelManager>();
-        playAgainButton.onClick.AddListener(levelManager.RestartLevel);
-        nextLevelButton.onClick.AddListener(levelManager.GoToNextScene);
+        levelSelect = FindObjectOfType<LevelSelect>();
     }
 
     public void SetGoalMenu(bool value)

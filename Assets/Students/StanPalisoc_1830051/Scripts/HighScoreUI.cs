@@ -14,13 +14,13 @@ public class HighScoreUI : MonoBehaviour
     private int currentScore;
     private Scene scene; 
     public bool isGoalReached { get; set; }
-    private LevelManager levelManager;
+    private ScoreManager scoreManager;
     
 
     private void Awake()
     {
         scene = SceneManager.GetActiveScene();
-        levelManager = FindObjectOfType<LevelManager>();
+        scoreManager = FindObjectOfType<ScoreManager>();
         Debug.Log(scene.buildIndex.ToString());
 
     }
@@ -40,7 +40,7 @@ public class HighScoreUI : MonoBehaviour
 
     private void Update()
     {
-        currentScore = (int)(levelManager.GetScore());
+        currentScore = (int)(scoreManager.GetScore());
         UpdateScore();
     }
 

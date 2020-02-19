@@ -5,4 +5,8 @@ using UnityEngine;
 public class Level : MonoBehaviour
 {
     public LevelData levelData;
+    private void Start()
+    {
+        levelData = FindObjectOfType<LevelSelect>().selectedLevel;
+    }
 }

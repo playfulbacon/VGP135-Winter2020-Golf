@@ -9,6 +9,6 @@ public class ParUI : MonoBehaviour
 
     void Start()
     {
-        parUIText.text = "PAR " + FindObjectOfType<Level>().levelData.par.ToString();
+        parUIText.text = "PAR " + FindObjectOfType<LevelSelect>().selectedLevel.par.ToString();
     }
 }

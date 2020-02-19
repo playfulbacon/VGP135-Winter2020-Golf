@@ -6,6 +6,7 @@ using System.ComponentModel;
 
 public class LevelManager : MonoBehaviour
 {
+    
     public enum Score
     {
         [Description("Albatross")]
@@ -67,8 +68,9 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene("LevelSelect");
     }
 
+    
     public Score GetScore()
     {
-        return (Score)FindObjectOfType<HitCounter>().Hits - FindObjectOfType<Level>().levelData.par;
+        return (Score)FindObjectOfType<HitCounter>().Hits - FindObjectOfType<LevelSelect>().selectedLevel.par;
     }
 }

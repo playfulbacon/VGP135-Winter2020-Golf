@@ -19,9 +19,13 @@ public class InputController : MonoBehaviour
 
     private void Update()
     {
-        isRotatingCam = Input.touchCount == 2 || Input.GetKey(DebugKey);
+        bool _isRotatingCam = Input.touchCount == 2 || Input.GetKey(DebugKey);
 
-        cameraRotator.SetEnabled(isRotatingCam);
-        ballController.SetEnabled(!isRotatingCam);
+        if (isRotatingCam != _isRotatingCam)
+        {
+            isRotatingCam = _isRotatingCam;
+            cameraRotator.SetEnabled(isRotatingCam);
+            ballController.SetEnabled(!isRotatingCam);
+        }
     }
 }

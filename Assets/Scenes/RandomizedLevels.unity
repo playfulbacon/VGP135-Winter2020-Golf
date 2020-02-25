@@ -348,6 +348,26 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2271243510994875026, guid: 5692a549316ae7f418bcb26c33bd9bb4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.42261827
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271243510994875026, guid: 5692a549316ae7f418bcb26c33bd9bb4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9063079
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271243510994875026, guid: 5692a549316ae7f418bcb26c33bd9bb4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271243510994875026, guid: 5692a549316ae7f418bcb26c33bd9bb4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5692a549316ae7f418bcb26c33bd9bb4, type: 3}
 --- !u!1 &2057944608
@@ -388,6 +408,7 @@ MonoBehaviour:
     type: 3}
   obstacleCubePrefab: {fileID: 3737220394360416222, guid: 2fe4723573c732343ad96f32bcb79d3d,
     type: 3}
+  gridSize: 25
 --- !u!4 &2057944610
 Transform:
   m_ObjectHideFlags: 0

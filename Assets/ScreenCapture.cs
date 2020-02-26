@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class ScreenCapture : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public KeyCode keyCode = KeyCode.S;
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(keyCode))
             CaptureScreen();
     }
 

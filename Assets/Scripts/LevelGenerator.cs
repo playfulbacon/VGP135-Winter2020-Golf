@@ -1,71 +1,70 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public float minrandomGoalRange = 5f;
-    public float maxrandomGoalRange = 5f;
-
-    public float minrandomObjstacleRange = 5f;
-    public float maxrandomObjstacleRange = 5f;
-
     public GameObject ballPrefab;
     public GameObject goalPrefab;
     public GameObject planePrefab;
     public GameObject obstaclePrefab;
+    public GameObject coinPrefab;
     private int gridSize = 10;
+    List<Vector2> freeGridSpaces = new List<Vector2>();
 
-    List<Vector2> freeGridSpaces;
-    Dictionary<Vector2, GameObject> positionObjectDirctionary = new Dictionary<Vector2, GameObject>();
-    
-
-    public void Awake()
+    private void Awake()
     {
         GenerateLevel();
     }
 
-    // Start is called before the first frame update
-
-    // Update is called once per frame
-    void Update()
+    private void GenerateLevel()
     {
-        
-    }
-    void GenerateLevel()
-    {
-        
-        for(int y =0; y<gridSize;++y)
+        // populate the free grid spaces array
+        for (int y = 0; y < gridSize; y++)
         {
-            for(int x=0; x<gridSize;++x)
+            for (int x = 0; x < gridSize; x++)
             {
-                freeGridSpaces.Add(new Vector2(x,y));
+                freeGridSpaces.Add(new Vector2(x, y));
             }
         }
-        GameObject plane = Instantiate(planePrefab);
+
         GameObject ball = Instantiate(ballPrefab);
+        RandomlyPositionObjectOnGrid(ball);
+        ball.transform.position += Vector3.up * 2f;
 
-        
-        plane.transform.localScale = new Vector3(gridSize/5f, 1,gridSize/5f);
+        // create plane and set size
+        GameObject plane = Instantiate(planePrefab);
+        plane.transform.localScale = new Vector3(gridSize / 5f, 1f, gridSize / 5f);
+
+        // create goal and randomize position
         GameObject goal = Instantiate(goalPrefab);
-        RandomlyPositionIbjectOnGrid(goal);
+        RandomlyPositionObjectOnGrid(goal);
 
-        for(int i =0;i<5;++i)
+        // create obstacles and randomize position
+        for (int i = 0; i < 15; i++)
         {
-            GameObject objstacle = Instantiate(obstaclePrefab);
-            RandomlyPositionIbjectOnGrid(objstacle);
+            GameObject obstacle = Instantiate(obstaclePrefab);
+            RandomlyPositionObjectOnGrid(obstacle);
+        }
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject coin = Instantiate(coinPrefab);
+            RandomlyPositionObjectOnGrid(coin);
         }
     }
-    private void RandomlyPositionIbjectOnGrid(GameObject gameObject)
+
+    private void RandomlyPositionObjectOnGrid(GameObject gameObject)
     {
-        if(freeGridSpaces.Count==0)
+        if (freeGridSpaces.Count == 0)
         {
+            Debug.LogError("no free spaces left in the grid!");
             return;
         }
+
         Vector2 gridSpace = freeGridSpaces[Random.Range(0, freeGridSpaces.Count)];
         freeGridSpaces.Remove(gridSpace);
-        Vector3 gridPosition = new Vector3(-gridSize/2 + gridSpace[0],  0, -gridSize / 2 + gridSpace[0]);
+        Vector3 gridPosition = new Vector3(-gridSize / 2 + gridSpace[0], 0, -gridSize / 2 + gridSpace[1]);
         gameObject.transform.position = gridPosition;
-
     }
 }

@@ -109,6 +109,8 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
+        GetComponentInChildren<TextMesh>().text = state.ToString();
+
         switch (state)
         {
             case State.Idle:

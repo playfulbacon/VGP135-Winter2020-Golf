@@ -6,16 +6,9 @@ public class BallCollision : MonoBehaviour
 {
     BallHealth ballHealth;
 
-    // Start is called before the first frame update
     void Start()
     {
         ballHealth = GetComponent<BallHealth>();    
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -24,6 +17,16 @@ public class BallCollision : MonoBehaviour
         if (obstacle != null)
         {
             ballHealth.TakeDamage(obstacle.damage);
+        }
+
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            float magnitude = GetComponent<Rigidbody>().velocity.magnitude;
+            if (magnitude > 2f)
+            {
+                enemy.TakeDamage(enemy.maxHealth / 2);
+            }
         }
     }
 }

@@ -23,7 +23,7 @@ public class BallCollision : MonoBehaviour
         if (enemy != null)
         {
             float magnitude = GetComponent<Rigidbody>().velocity.magnitude;
-            if (magnitude > 2f)
+            if (magnitude > 2.5f)
             {
                 enemy.TakeDamage(enemy.maxHealth / 2);
             }

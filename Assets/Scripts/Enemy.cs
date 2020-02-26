@@ -55,10 +55,14 @@ public class Enemy : MonoBehaviour
         c.r = Mathf.Lerp(0.75f, 0f, health / maxHealth);
         GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", c);
 
-        pursueRange *= 2;
-        attackDamage *= 2;
-        pursueSpeed *= 2;
         isAgro = true;
+
+        if (isAgro)
+        {
+            pursueRange *= 2;
+            attackDamage *= 2;
+            pursueSpeed *= 2;
+        }
 
         if (health <= 0)
         {
@@ -70,7 +74,7 @@ public class Enemy : MonoBehaviour
         {
             OnAttackComplete();
             state = State.Knockback;
-            Invoke("ExitKnockback", 1f);
+            Invoke("ExitKnockback", 0.5f);
         }
     }
 

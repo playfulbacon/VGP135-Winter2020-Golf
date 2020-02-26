@@ -7,9 +7,12 @@ public class LevelGenerator : MonoBehaviour
     public GameObject ballPrefab;
     public GameObject goalPrefab;
     public GameObject planePrefab;
+    public GameObject pickup_SpeedUpPrefab;
+    public GameObject pickup_SizeUpPrefab; 
     public GameObject obstaclePrefab;
 
-    private int gridSize = 10;
+    private int gridSize = 15;
+    private float yOffSet = 0.3f;     
     List<Vector2> reservedPositions = new List<Vector2>();
     List<Vector2> freeGridSpaces = new List<Vector2>();
 
@@ -39,12 +42,35 @@ public class LevelGenerator : MonoBehaviour
         GameObject goal = Instantiate(goalPrefab);
         RandomlyPositionObjectOnGrid(goal);
 
+      
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject pickUp_Speed = Instantiate(pickup_SpeedUpPrefab);
+            RandomlyPositionObjectOnGrid(pickUp_Speed);
+            pickUp_Speed.transform.position += Vector3.up * yOffSet; 
+        }
 
-        //Create goal and randomize position
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 7; i++)
+        {
+            GameObject pickUp_SizeUp = Instantiate(pickup_SizeUpPrefab);
+            RandomlyPositionObjectOnGrid(pickUp_SizeUp);
+            if(i % 2 == 0)
+            {
+                pickUp_SizeUp.GetComponent<Pickup_ResizeBall>().changeSize = ChangeSize.Increase;
+            }
+            else
+            {
+                pickUp_SizeUp.GetComponent<Pickup_ResizeBall>().changeSize = ChangeSize.Decrease;
+            }
+            pickUp_SizeUp.GetComponent<Pickup_ResizeBall>().sizeMultiplier = Random.Range(2, 5);
+            pickUp_SizeUp.transform.position += Vector3.up * yOffSet;
+
+        }
+
+        for (int i = 0; i < 30; i++)
         {
             GameObject obstacle = Instantiate(obstaclePrefab);
-            RandomlyPositionObjectOnGrid(obstacle);           
+            RandomlyPositionObjectOnGrid(obstacle);
         }
     }
 

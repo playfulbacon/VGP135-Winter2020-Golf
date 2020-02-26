@@ -42,21 +42,19 @@ public class LevelGenerator : MonoBehaviour
         GameObject goal = Instantiate(goalPrefab);
         RandomlyPositionObjectOnGrid(goal);
 
-      
-        for (int i = 0; i < 5; i++)
+        int speedPickupsToSpawn = Random.Range(2, 5);
+        for (int i = 0; i < speedPickupsToSpawn; i++)
         {
             GameObject pickUp_Speed = Instantiate(pickup_SpeedUpPrefab);
-            float speedmultiplier = Random.Range(0.5f, 3f);
+            float speedmultiplier = Random.value > 0.5f ? Random.Range(1.5f, 3f) : Random.Range(0.5f, 0.75f);
+            pickUp_Speed.GetComponent<Pickup_SpeedUp>().multiplier = speedmultiplier;
+
             RandomlyPositionObjectOnGrid(pickUp_Speed);
-            if(speedmultiplier == 1.0f)
-            {
-                speedmultiplier += 0.5f;
-            }
-            pickUp_Speed.GetComponent<Pickup_SpeedUp>().multiplier = Random.Range(0.5f, 3f);
-            pickUp_Speed.transform.position += Vector3.up * yOffSet; 
+            pickUp_Speed.transform.position += Vector3.up * yOffSet;
         }
 
-        for (int i = 0; i < 7; i++)
+        int sizePickupsToSpawn = Random.Range(3, 7);
+        for (int i = 0; i < sizePickupsToSpawn; i++)
         {
             GameObject pickUp_SizeUp = Instantiate(pickup_SizeUpPrefab);
             RandomlyPositionObjectOnGrid(pickUp_SizeUp);

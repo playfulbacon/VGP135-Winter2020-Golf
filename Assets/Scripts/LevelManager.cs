@@ -2,28 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.ComponentModel;
 
 public class LevelManager : MonoBehaviour
 {
-    public enum Score
-    {
-        [Description("Albatross")]
-        Albatross = -3,
-        [Description("Eagle")]
-        Eagle = -2,
-        [Description("Birdie")]
-        Birdie = -1,
-        [Description("Par")]
-        Par = 0,
-        [Description("Bogie")]
-        Bogie = 1,
-        [Description("Double Bogie")]
-        DoubleBogie = 2,
-        [Description("Triple Bogie")]
-        TripleBogie = 3,
-    }
-
     public string defaultSceneName = "MainMenu";
 
     private void Awake()
@@ -65,10 +46,5 @@ public class LevelManager : MonoBehaviour
     public void GoToLevelSelect()
     {
         SceneManager.LoadScene("LevelSelect");
-    }
-
-    public Score GetScore()
-    {
-        return (Score)FindObjectOfType<HitCounter>().Hits - FindObjectOfType<Level>().levelData.par;
     }
 }

@@ -5,7 +5,7 @@ using System;
 
 public class BallController : MonoBehaviour
 {
-    public Action OnTouchDown, OnStartDrag, OnTouchUp;
+    public Action OnTouchDown, OnStartDrag, OnTouchUp, OnMouseUp;
     public Action<Vector3, float> OnDrag;
     public Action<Vector3> OnHit;
 
@@ -18,6 +18,9 @@ public class BallController : MonoBehaviour
 
     int hits = 0;
 
+    CameraRotator cameraRotator;
+    bool controllerEnabled = true;
+
     void Start()
     {
         balls = FindObjectsOfType<Ball>();    
@@ -28,11 +31,23 @@ public class BallController : MonoBehaviour
             OnStartDrag += ball.StartDrag;
             OnDrag += ball.Drag;
             OnHit += ball.Hit;
+            OnMouseUp += ball.MouseUp;
         }
+
+        cameraRotator = FindObjectOfType<CameraRotator>();
     }
 
     void LateUpdate()
     {
+        if (!controllerEnabled)
+        {
+            isPressed = false;
+            isDragging = false;
+            OnDrag?.Invoke(Vector3.forward, 0.0f);
+            OnMouseUp?.Invoke();
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             Time.timeScale = aimingSlowdown;
@@ -54,8 +69,11 @@ public class BallController : MonoBehaviour
                     OnStartDrag?.Invoke();
                 }
 
-                hitDirection = -(mousePos - dragStartPos).normalized;
-                hitDirection = new Vector3(hitDirection.x, 0f, hitDirection.y);
+                hitDirection = -(mousePos - dragStartPos);
+                hitDirection = new Vector3(hitDirection.x, 0f, hitDirection.y).normalized;
+
+                if (cameraRotator)
+                    hitDirection = Quaternion.Euler(0.0f, cameraRotator.GetCurrentYRotation(), 0.0f) * hitDirection;
             }
         }
 
@@ -80,5 +98,10 @@ public class BallController : MonoBehaviour
             isPressed = false;
             isDragging = false;
         }
+    }
+
+    public void SetEnabled(bool enabled)
+    {
+        controllerEnabled = enabled;
     }
 }

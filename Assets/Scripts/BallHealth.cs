@@ -26,6 +26,7 @@ public class BallHealth : MonoBehaviour
         SetHealth(currentHealth - damage);
         if (currentHealth <= 0)
         {
+            GetComponent<Ball>().gameObject.SetActive(false);
             OnDeath?.Invoke();
         }
     }

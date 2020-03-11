@@ -39,12 +39,21 @@ public class Enemy : MonoBehaviour
 
     bool isAgro = false;
 
+    GameObject roastChicken;
+
     private void Awake()
     {
         enemyAnimatorHelper = GetComponentInChildren<EnemyAnimatorHelper>();
         enemyAnimatorHelper.OnAttack += OnAttack;
         enemyAnimatorHelper.OnAttackComplete += OnAttackComplete;
         health = maxHealth;
+
+        roastChicken = Resources.Load("prefabs/roastChicken") as GameObject;
+    }
+
+    public GameObject GetRoastChicken()
+    {
+        return roastChicken;
     }
 
     public void TakeDamage(float damage)

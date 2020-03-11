@@ -19,7 +19,7 @@ public class BallCollision : MonoBehaviour
         Obstacle obstacle = obstacleObj.GetComponent<Obstacle>();
         if (obstacle != null)
         {
-            if (!ballSkills.fireSkill)
+            if (!ballSkills.mIsFire)
             {
                 ballHealth.TakeDamage(obstacle.damage);
             }
@@ -33,9 +33,17 @@ public class BallCollision : MonoBehaviour
         if (enemy != null)
         {
             float magnitude = GetComponent<Rigidbody>().velocity.magnitude;
-            if (magnitude > 2.5f)
+            if (!ballSkills.mIsFire)
             {
-                enemy.TakeDamage(enemy.maxHealth / 2);
+                if (magnitude > 2.5f)
+                {
+                    enemy.TakeDamage(enemy.maxHealth / 2);
+                }
+            }
+            else
+            {
+                enemy.TakeDamage(enemy.maxHealth);
+                Instantiate(enemy.GetRoastChicken(), enemy.transform.position, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f));
             }
         }
     }

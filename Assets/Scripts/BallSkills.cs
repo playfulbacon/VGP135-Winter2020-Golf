@@ -5,8 +5,15 @@ using UnityEngine;
 public class BallSkills : MonoBehaviour
 {
     Ball ball;
+    
     ParticleSystem ps;
-    public bool fireSkill = false;
+    private bool isFire;
+
+    public bool mIsFire
+    {
+        get { return isFire; }
+        set { isFire = value; }
+    }
 
     private void Awake()
     {
@@ -25,20 +32,21 @@ public class BallSkills : MonoBehaviour
     
     void Update()
     {
-        if (!fireSkill)
+        // Fire Skill
+        if (!isFire)
         {
-            if (Input.GetKeyDown("1"))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 ps.Play();
-                fireSkill = true;
+                isFire = true;
             }
         }
         else
         {
-            if (Input.GetKeyDown("1"))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 ps.Stop();
-                fireSkill = false;
+                isFire = false;
             }
         }
         ps.transform.rotation = Quaternion.Euler(-90.0f, 0.0f, gameObject.transform.rotation.z * -1.0f);

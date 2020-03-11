@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Skill_Jump : MonoBehaviour
 {
+    public KeyCode levelUpKey = KeyCode.J; 
+    public KeyCode levelDownKey = KeyCode.K;
+
     int currentLevel = 0;
-    float jumpVelocity = 0.0f;
+    float jumpForce = 0.0f;
     float maxDistance = 0.251f;
     bool isJumping = false;
     bool toJump = false;
@@ -19,14 +22,6 @@ public class Skill_Jump : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            SetSkillLevel(currentLevel + 1);
-        }
-        else if (Input.GetKeyDown(KeyCode.K))
-        {
-            SetSkillLevel(currentLevel - 1);
-        }
 
         Ray ray = new Ray(transform.position, Vector3.down);
 
@@ -37,7 +32,7 @@ public class Skill_Jump : MonoBehaviour
 
         if (currentLevel > 0 && toJump && !isJumping)
         {
-            rb.velocity = new Vector3(rb.velocity.x, jumpVelocity, rb.velocity.z);
+            rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
             isJumping = true;
             toJump = false;
         }
@@ -45,6 +40,16 @@ public class Skill_Jump : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(levelUpKey))
+        {
+            SetSkillLevel(currentLevel + 1);
+        }
+        else if (Input.GetKeyDown(levelDownKey))
+        {
+            SetSkillLevel(currentLevel - 1);
+        }
+
+
         if (currentLevel > 0 && !isJumping && Input.GetButtonDown("Jump"))
         {
             toJump = true;
@@ -56,11 +61,11 @@ public class Skill_Jump : MonoBehaviour
         currentLevel = Mathf.Clamp(level, 0, 3);
         if (currentLevel > 0)
         {
-            jumpVelocity = 2.0f + (currentLevel * 3.0f);
+            jumpForce = 2.0f + (currentLevel * 3.0f);
         }
         else
         {
-            jumpVelocity = 0.0f;
+            jumpForce = 0.0f;
         }
     }
 }

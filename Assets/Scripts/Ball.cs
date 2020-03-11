@@ -13,6 +13,9 @@ public class Ball : MonoBehaviour
     float speedMultiplier = 1f;
     [SerializeField]
     float currentForce = 0f;
+    [SerializeField]
+    [Range(0.0f, 1.0f)]
+    float accuracyValue = 0.0f;
     float forcePercentage = 0.0f;
     float maxForceDistance = 200.0f;
     float currentForceDistance;
@@ -67,7 +70,7 @@ public class Ball : MonoBehaviour
 
     public void Hit(Vector3 hitDirection)
     {
-        rb.AddForce(hitDirection * currentForce);
+        rb.AddForce(HitDirectionWithAccuracy(hitDirection) * currentForce);
 
         AudioSource audioSource = GetComponent<AudioSource>();
         if (audioSource)
@@ -75,5 +78,16 @@ public class Ball : MonoBehaviour
             audioSource.pitch = Mathf.Lerp(3f, 1f, currentForce / hitMaxForce);
             GetComponent<AudioSource>()?.Play();
         }
+    }
+
+    public void SetAccuracy(float value)
+    {
+        accuracyValue = Mathf.Clamp01(value);
+    }
+
+    private Vector3 HitDirectionWithAccuracy(Vector3 hitdirection)
+    {
+        float angleRange = (1.0f - accuracyValue) * 45.0f;
+        return Quaternion.Euler(0.0f, Random.Range(-angleRange, angleRange), 0.0f) * hitdirection;
     }
 }

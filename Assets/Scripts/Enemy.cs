@@ -41,6 +41,8 @@ public class Enemy : MonoBehaviour
 
     bool isAgro = false;
 
+    GameObject roastChicken;
+
     private void Awake()
     {
         enemyAnimatorHelper = GetComponentInChildren<EnemyAnimatorHelper>();
@@ -49,6 +51,8 @@ public class Enemy : MonoBehaviour
         health = maxHealth;
 
         FindObjectOfType<Goal>().OnGoal += Goal;
+
+        roastChicken = Resources.Load("prefabs/roastChicken") as GameObject;
     }
 
     private void Goal()
@@ -59,7 +63,14 @@ public class Enemy : MonoBehaviour
         pursuingBall = null;
     }
 
-    public float TakeDamage(float damage)
+    public bool WillKill(float damage)
+    {
+        float newHealth = health;
+        newHealth -= damage;
+        return newHealth <= 0;
+    }
+
+    public float TakeDamage(float damage, bool isBallOnFire = false)
     {
         health -= damage;
 
@@ -78,7 +89,7 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            Kill();
+            Kill(isBallOnFire);
             return 0;
         }
             
@@ -92,8 +103,11 @@ public class Enemy : MonoBehaviour
         return health;
     }
 
-    void Kill()
+    void Kill(bool doRoastChicken = false)
     {
+        if (doRoastChicken)
+            Instantiate(roastChicken, transform.position, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f));
+
         FindObjectOfType<Goal>().OnGoal -= Goal;
         Destroy(gameObject);
     }

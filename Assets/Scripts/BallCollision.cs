@@ -6,27 +6,40 @@ public class BallCollision : MonoBehaviour
 {
     public System.Action<Enemy> OnEnemyKill;
     BallHealth ballHealth;
+    Skill_Fire ballFire;
 
     void Start()
     {
-        ballHealth = GetComponent<BallHealth>();    
+        ballHealth = GetComponent<BallHealth>();
+        ballFire = GetComponent<Skill_Fire>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Obstacle obstacle = collision.gameObject.GetComponent<Obstacle>();
+        GameObject obstacleObj = collision.gameObject;
+        Obstacle obstacle = obstacleObj.GetComponent<Obstacle>();
         if (obstacle != null)
         {
-            ballHealth.TakeDamage(obstacle.damage);
+            if (!ballFire.mIsFire)
+            {
+                ballHealth.TakeDamage(obstacle.damage);
+            }
+            else
+            {
+                Destroy(obstacleObj);
+            }
         }
 
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+
         if (enemy != null)
         {
             float magnitude = GetComponent<Rigidbody>().velocity.magnitude;
+
             if (magnitude > 2.5f)
             {
-                float enemyHealth = enemy.TakeDamage(enemy.maxHealth / 2);
+                float damage = ballFire.mIsFire ? (enemy.maxHealth) : (enemy.maxHealth / 2f);
+                float enemyHealth = enemy.TakeDamage(damage, ballFire.mIsFire);
 
                 if (enemyHealth == 0)
                     OnEnemyKill?.Invoke(enemy);

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Goal : MonoBehaviour
 {
+    public System.Action OnGoal;
+
     private GoalMenu goalMenu;
     private LevelSelect levelSelect;
 
@@ -28,10 +30,9 @@ public class Goal : MonoBehaviour
 
             ball.GetComponent<Rigidbody>().isKinematic = true;
      
-            goalMenu?.SetScoreText();
-            goalMenu?.SetGoalMenu(true);
-
             FindObjectOfType<InputController>().enabled = false;
+
+            OnGoal?.Invoke();
         }
     }
 }

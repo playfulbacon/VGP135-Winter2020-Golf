@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class BallCollision : MonoBehaviour
 {
+    public System.Action<Enemy> OnEnemyKill;
     BallHealth ballHealth;
-    Skill_Fire ballSkills;
+    Skill_Fire ballFire;
 
     void Start()
     {
         ballHealth = GetComponent<BallHealth>();
-        ballSkills = GetComponent<Skill_Fire>();
+        ballFire = GetComponent<Skill_Fire>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -19,7 +20,7 @@ public class BallCollision : MonoBehaviour
         Obstacle obstacle = obstacleObj.GetComponent<Obstacle>();
         if (obstacle != null)
         {
-            if (!ballSkills.mIsFire)
+            if (!ballFire.mIsFire)
             {
                 ballHealth.TakeDamage(obstacle.damage);
             }
@@ -30,20 +31,18 @@ public class BallCollision : MonoBehaviour
         }
 
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+
         if (enemy != null)
         {
             float magnitude = GetComponent<Rigidbody>().velocity.magnitude;
-            if (!ballSkills.mIsFire)
+
+            if (magnitude > 2.5f)
             {
-                if (magnitude > 2.5f)
-                {
-                    enemy.TakeDamage(enemy.maxHealth / 2);
-                }
-            }
-            else
-            {
-                enemy.TakeDamage(enemy.maxHealth);
-                Instantiate(enemy.GetRoastChicken(), enemy.transform.position, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f));
+                float damage = ballFire.mIsFire ? (enemy.maxHealth) : (enemy.maxHealth / 2f);
+                float enemyHealth = enemy.TakeDamage(damage, ballFire.mIsFire);
+
+                if (enemyHealth == 0)
+                    OnEnemyKill?.Invoke(enemy);
             }
         }
     }

@@ -11,7 +11,8 @@ public class Skill_Fire : MonoBehaviour
     float fireCooldown = 5.0f;
 
     Ball ball;
-    ParticleSystem ps;
+    public ParticleSystem fireParticlesPrefab;
+    private ParticleSystem ps;
     int currentLevel;
     float stopFireTime = 0.0f;
     float fireReadyTime = 0.0f;
@@ -26,16 +27,9 @@ public class Skill_Fire : MonoBehaviour
     private void Awake()
     {
         ball = GetComponent<Ball>();
-        ps = ball.GetComponentInChildren<ParticleSystem>();
-    }
-
-    void Start()
-    {
-        if (ps != null)
-        {
-            Instantiate(ps);
-            ps.Stop();
-        }
+        ps = Instantiate(fireParticlesPrefab, transform).GetComponent<ParticleSystem>();
+        ps.transform.localPosition = Vector3.zero;
+        ps.Stop();
     }
     
     void Update()

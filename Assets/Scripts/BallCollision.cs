@@ -5,18 +5,28 @@ using UnityEngine;
 public class BallCollision : MonoBehaviour
 {
     BallHealth ballHealth;
+    BallSkills ballSkills;
 
     void Start()
     {
-        ballHealth = GetComponent<BallHealth>();    
+        ballHealth = GetComponent<BallHealth>();
+        ballSkills = GetComponent<BallSkills>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Obstacle obstacle = collision.gameObject.GetComponent<Obstacle>();
+        GameObject obstacleObj = collision.gameObject;
+        Obstacle obstacle = obstacleObj.GetComponent<Obstacle>();
         if (obstacle != null)
         {
-            ballHealth.TakeDamage(obstacle.damage);
+            if (!ballSkills.fireSkill)
+            {
+                ballHealth.TakeDamage(obstacle.damage);
+            }
+            else
+            {
+                Destroy(obstacleObj);
+            }
         }
 
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();

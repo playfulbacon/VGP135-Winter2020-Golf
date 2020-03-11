@@ -6,6 +6,7 @@ public class BallLevel : MonoBehaviour
 {
     public System.Action OnXPChange;
     public System.Action OnLevelChange;
+    public System.Action OnSkillPointsChange;
     public System.Action<int> OnGoal;
 
     public bool resetLevelAndXp = false;
@@ -22,6 +23,9 @@ public class BallLevel : MonoBehaviour
 
     Coroutine xpChangingCoroutine = null;
 
+    private int skillPoints = 0;
+    public int SkillPoints { get { return skillPoints; } }
+
     private void Awake()
     {
         BallCollision[] ballCollisions = FindObjectsOfType<BallCollision>();
@@ -33,6 +37,7 @@ public class BallLevel : MonoBehaviour
         SetXP(PlayerPrefs.GetInt("xp"));
         int savedLevel = PlayerPrefs.GetInt("level");
         SetLevel(savedLevel == 0 ? 1 : savedLevel);
+        SetSkillPoints(PlayerPrefs.GetInt("skillPoints"));
 
         if (resetLevelAndXp)
         {
@@ -73,13 +78,19 @@ public class BallLevel : MonoBehaviour
 
             if (xp == xpToLevelUp)
             {
-                SetLevel(level + 1);
-                SetXP(0);
+                LevelUp();
                 yield return new WaitForSeconds(0.5f);
             }
         }
 
         xpChangingCoroutine = null;
+    }
+
+    private void LevelUp()
+    {
+        SetLevel(level + 1);
+        SetSkillPoints(skillPoints + 1);
+        SetXP(0);
     }
 
     private void SetXP(int set)
@@ -94,5 +105,12 @@ public class BallLevel : MonoBehaviour
         level = set;
         PlayerPrefs.SetInt("level", level);
         OnLevelChange?.Invoke();
+    }
+
+    private void SetSkillPoints(int set)
+    {
+        skillPoints = set;
+        PlayerPrefs.SetInt("skillPoints", skillPoints);
+        OnSkillPointsChange?.Invoke();
     }
 }

@@ -69,6 +69,7 @@ public class Skill_Fire : MonoBehaviour
     {
         currentLevel = Mathf.Clamp(level, 0, 3);
         fireDuration = currentLevel;
+        print("set level " + currentLevel);
     }
 
     public float GetTimeUntilCooldown()

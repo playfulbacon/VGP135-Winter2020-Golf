@@ -5,12 +5,12 @@ using UnityEngine;
 public class BallCollision : MonoBehaviour
 {
     BallHealth ballHealth;
-    BallSkills ballSkills;
+    Skill_Fire ballSkills;
 
     void Start()
     {
         ballHealth = GetComponent<BallHealth>();
-        ballSkills = GetComponent<BallSkills>();
+        ballSkills = GetComponent<Skill_Fire>();
     }
 
     private void OnCollisionEnter(Collision collision)

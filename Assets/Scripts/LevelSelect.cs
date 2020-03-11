@@ -9,7 +9,6 @@ public class LevelSelect : MonoBehaviour
     public LevelData[] levels;
     public LevelData selectedLevel;
 
-    // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -25,12 +24,6 @@ public class LevelSelect : MonoBehaviour
         }
 
         levelSelectButton.gameObject.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void SelectLevel(LevelData levelData)

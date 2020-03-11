@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    enum State { Idle, Pursue, Attack, Knockback };
+    enum State { Idle, Pursue, Attack, Knockback, Goal };
     State state = State.Idle;
+
+    public int xpValue = 1;
 
     [SerializeField]
     Animator animator;
@@ -45,9 +47,19 @@ public class Enemy : MonoBehaviour
         enemyAnimatorHelper.OnAttack += OnAttack;
         enemyAnimatorHelper.OnAttackComplete += OnAttackComplete;
         health = maxHealth;
+
+        FindObjectOfType<Goal>().OnGoal += Goal;
     }
 
-    public void TakeDamage(float damage)
+    private void Goal()
+    {
+        state = State.Goal;
+        animator.SetBool("Run", false);
+        animator.SetBool("Eat", false);
+        pursuingBall = null;
+    }
+
+    public float TakeDamage(float damage)
     {
         health -= damage;
 
@@ -67,7 +79,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Kill();
-            return;
+            return 0;
         }
             
         if (state != State.Knockback)
@@ -76,15 +88,21 @@ public class Enemy : MonoBehaviour
             state = State.Knockback;
             Invoke("ExitKnockback", 0.5f);
         }
+
+        return health;
     }
 
     void Kill()
     {
+        FindObjectOfType<Goal>().OnGoal -= Goal;
         Destroy(gameObject);
     }
 
     void OnAttack()
     {
+        if (state == State.Goal)
+            return;
+
         if (Vector3.Distance(transform.position, pursuingBall.transform.position) <= attackRange)
             pursuingBall.GetComponent<BallHealth>().TakeDamage(attackDamage);
     }
@@ -109,7 +127,9 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        GetComponentInChildren<TextMesh>().text = state.ToString();
+        TextMesh debugText = GetComponentInChildren<TextMesh>();
+        if (debugText)
+            debugText.text = state.ToString();
 
         switch (state)
         {
@@ -159,14 +179,14 @@ public class Enemy : MonoBehaviour
 
     void Update_StatePursue()
     {
-        if (pursuingBall != null)
-        {
-            Vector3 targetPosition = pursuingBall.transform.position + ((transform.position - pursuingBall.transform.position).normalized * 1f);
-            Vector3 newPosition = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * pursueSpeed);
-            rb.MovePosition(newPosition);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(pursuingBall.transform.position - transform.position), Time.deltaTime * 180f);
-        }
+        if (pursuingBall == null)
+            return;
 
+        Vector3 targetPosition = pursuingBall.transform.position + ((transform.position - pursuingBall.transform.position).normalized * 1f);
+        Vector3 newPosition = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * pursueSpeed);
+        rb.MovePosition(newPosition);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(pursuingBall.transform.position - transform.position), Time.deltaTime * 180f);
+        
         if (Vector3.Distance(transform.position, pursuingBall.transform.position) > pursueRange)
         {
             pursuingBall = null;
@@ -176,6 +196,8 @@ public class Enemy : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
 
             state = State.Idle;
+
+            return;
         }
 
         if (Vector3.Distance(transform.position, pursuingBall.transform.position) <= startAttackRange)

@@ -25,11 +25,6 @@ public class ScoreManager : MonoBehaviour
 
     public Score GetScore()
     {
-        LevelSelect levelSelect = FindObjectOfType<LevelSelect>();
-        int par = 4;
-        if (levelSelect)
-            par = levelSelect.selectedLevel.par;
-
-        return (Score)FindObjectOfType<HitCounter>().Hits - par;
+        return (Score)FindObjectOfType<HitCounter>().Hits - FindObjectOfType<LevelManager>().LevelPar;
     }
 }

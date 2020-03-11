@@ -14,22 +14,30 @@ public class GoalMenu : MonoBehaviour
     private bool isGoalMenuActive { get { return goalMenuHolder.gameObject.activeSelf; } }	    int finalScore;
     private Text goalText;
 
-    void Start()
+    void Awake()
     {
         SetGoalMenu(false);
         goalText = goalMenuHolder.GetComponentInChildren<Text>();
-        FindObjectOfType<HighScoreUI>().isGoalReached = false;
         scoreManager = FindObjectOfType<ScoreManager>();
 
         LevelManager levelManager = FindObjectOfType<LevelManager>();
         playAgainButton.onClick.AddListener(levelManager.RestartLevel);
         nextLevelButton.onClick.AddListener(levelManager.GoToNextScene);
+
+        Goal goal = FindObjectOfType<Goal>();
+        if (goal != null)
+            goal.OnGoal += Goal;
+    }
+
+    private void Goal()
+    {
+        SetScoreText();
+        SetGoalMenu(true);
     }
 
     public void SetGoalMenu(bool value)
     {
         goalMenuHolder.SetActive(value);
-        FindObjectOfType<HighScoreUI>().isGoalReached = true;
     }
 
     public void SetScoreText()

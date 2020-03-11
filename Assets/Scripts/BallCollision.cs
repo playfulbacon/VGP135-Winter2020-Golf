@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BallCollision : MonoBehaviour
 {
+    public System.Action<Enemy> OnEnemyKill;
     BallHealth ballHealth;
 
     void Start()
@@ -25,7 +26,10 @@ public class BallCollision : MonoBehaviour
             float magnitude = GetComponent<Rigidbody>().velocity.magnitude;
             if (magnitude > 2.5f)
             {
-                enemy.TakeDamage(enemy.maxHealth / 2);
+                float enemyHealth = enemy.TakeDamage(enemy.maxHealth / 2);
+
+                if (enemyHealth == 0)
+                    OnEnemyKill?.Invoke(enemy);
             }
         }
     }

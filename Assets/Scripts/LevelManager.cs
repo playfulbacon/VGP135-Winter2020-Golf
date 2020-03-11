@@ -5,7 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public LevelData levelData;
     public string defaultSceneName = "MainMenu";
+
+    public int LevelPar
+    {
+        get { return levelData == null ? 4 : levelData.par; }
+    }
 
     private void Awake()
     {

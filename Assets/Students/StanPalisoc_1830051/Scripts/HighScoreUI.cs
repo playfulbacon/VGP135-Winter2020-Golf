@@ -12,10 +12,10 @@ public class HighScoreUI : MonoBehaviour
     private int highScore = 100;
     [SerializeField]
     private int currentScore;
-    private Scene scene; 
+    private Scene scene;
     public bool isGoalReached { get; set; }
     private ScoreManager scoreManager;
-    
+
 
     private void Awake()
     {
@@ -23,6 +23,7 @@ public class HighScoreUI : MonoBehaviour
         scoreManager = FindObjectOfType<ScoreManager>();
         Debug.Log(scene.buildIndex.ToString());
 
+        FindObjectOfType<Goal>().OnGoal += SaveScore;
     }
 
     private void Start()
@@ -38,27 +39,19 @@ public class HighScoreUI : MonoBehaviour
         DisplayHighScore();
     }
 
-    private void Update()
-    {
-        currentScore = (int)(scoreManager.GetScore());
-        UpdateScore();
-    }
-
     public void DisplayHighScore()
     {
         highScoreText.text = "HighScore: " + PlayerPrefs.GetInt("HighScore" + scene.buildIndex.ToString());
-    }   
+    }
 
-    public void UpdateScore()
+    public void SaveScore()
     {
-        if (isGoalReached)
-        {           
-            if (currentScore < highScore)
-            {
-                highScore = currentScore;
-                PlayerPrefs.SetInt("HighScore" + scene.buildIndex.ToString(), highScore);
-                PlayerPrefs.Save();
-            }
+        currentScore = (int)(scoreManager.GetScore());
+
+        if (currentScore < highScore)
+        {
+            PlayerPrefs.SetInt("HighScore" + scene.buildIndex.ToString(), highScore);
+            PlayerPrefs.Save();
         }
     }
 }

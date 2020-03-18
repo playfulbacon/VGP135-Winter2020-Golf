@@ -32,19 +32,31 @@ public class SkillsUI : MonoBehaviour
 
         // setup buttons
         List<Button> jumpButtons = new List<Button>(jumpHolder.GetComponentsInChildren<Button>());
-        foreach(Button button in jumpButtons)
+        foreach (Button button in jumpButtons)
         {
             int level = jumpButtons.IndexOf(button) + 1;
+            int cost = level;
             button.GetComponentInChildren<Text>().text = $"Level {level}";
-            button.onClick.AddListener(() => FindObjectOfType<Skill_Jump>().SetSkillLevel(level));
+            button.onClick.AddListener(() =>
+            {
+                if (AttemptBuy(cost))
+                    FindObjectOfType<Skill_Jump>().SetSkillLevel(level);
+            }
+            );
         }
 
         List<Button> fireButtons = new List<Button>(fireHolder.GetComponentsInChildren<Button>());
         foreach (Button button in fireButtons)
         {
             int level = fireButtons.IndexOf(button) + 1;
+            int cost = level;
             button.GetComponentInChildren<Text>().text = $"Level {level}";
-            button.onClick.AddListener(() => { FindObjectOfType<Skill_Fire>().SetSkillLevel(level); });
+            button.onClick.AddListener(() =>
+            {
+                if (AttemptBuy(cost))
+                    FindObjectOfType<Skill_Fire>().SetSkillLevel(level);
+            }
+            );
         }
 
         Button[] accuracyButtons = accuracyHolder.GetComponentsInChildren<Button>();
@@ -52,6 +64,16 @@ public class SkillsUI : MonoBehaviour
         {
             button.onClick.AddListener(() => print("buy skill"));
         }
+    }
+
+    bool AttemptBuy(int cost)
+    {
+        if (ballLevel.SkillPoints >= cost)
+        {
+            ballLevel.SpendSkillPoints(cost);
+            return true;
+        }
+        else return false;
     }
 
     void SetSkillPoints()

@@ -93,6 +93,11 @@ public class BallLevel : MonoBehaviour
         SetXP(0);
     }
 
+    public void SpendSkillPoints(int num)
+    {
+        SetSkillPoints(skillPoints - num);
+    }
+
     private void SetXP(int set)
     {
         xp = set;
